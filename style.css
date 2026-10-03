@@ -252,3 +252,93 @@ nav div a:hover {
     border-color: var(--accent);
     color: var(--surface);
 }
+/* ========================================
+   QUICK FACTS
+======================================== */
+
+.quick-facts {
+    padding-top: 0;
+    padding-bottom: 0;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.fact {
+    min-height: 150px;
+    padding: 2.2rem 1.8rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    border-right: 1px solid var(--border);
+}
+
+.fact:first-child {
+    padding-left: 0;
+}
+
+.fact:last-child {
+    border-right: none;
+}
+
+.fact strong {
+    color: var(--text);
+
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+
+    margin-bottom: 0.25rem;
+}
+
+.fact span {
+    color: var(--text-secondary);
+    font-size: 0.88rem;
+}
+
+
+/* ========================================
+   ABOUT
+======================================== */
+
+#about {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    column-gap: 5rem;
+    align-items: start;
+
+    border-bottom: 1px solid var(--border);
+}
+
+#about > p:first-child {
+    color: var(--accent);
+
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+}
+
+#about h2 {
+    grid-column: 2;
+
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 1;
+    letter-spacing: -0.045em;
+
+    margin-bottom: 2rem;
+}
+
+#about > p:last-child {
+    grid-column: 2;
+
+    max-width: 700px;
+
+    color: var(--text-secondary);
+    font-size: 1.15rem;
+    line-height: 1.8;
+}
