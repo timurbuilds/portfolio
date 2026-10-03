@@ -4,7 +4,9 @@
 ======================================== */
 
 
-/* ---------- Design Variables ---------- */
+/* ========================================
+   DESIGN VARIABLES
+======================================== */
 
 :root {
     /* Classic menswear palette */
@@ -27,7 +29,9 @@
 }
 
 
-/* ---------- Reset ---------- */
+/* ========================================
+   RESET
+======================================== */
 
 * {
     margin: 0;
@@ -36,7 +40,9 @@
 }
 
 
-/* ---------- Global ---------- */
+/* ========================================
+   GLOBAL
+======================================== */
 
 html {
     scroll-behavior: smooth;
@@ -45,6 +51,7 @@ html {
 body {
     background: var(--background);
     color: var(--text);
+
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.6;
 }
@@ -94,10 +101,11 @@ nav {
 }
 
 nav > a {
+    color: var(--text);
+
     font-size: 1.25rem;
     font-weight: 700;
     letter-spacing: -0.03em;
-    color: var(--text);
 }
 
 nav div {
@@ -107,7 +115,9 @@ nav div {
 
 nav div a {
     color: var(--text-secondary);
+
     font-size: 0.9rem;
+
     transition: color 0.2s ease;
 }
 
@@ -134,9 +144,11 @@ nav div a:hover {
 
 #home > p:first-child {
     color: var(--accent);
+
     font-size: 0.78rem;
     font-weight: 700;
     letter-spacing: 0.15em;
+
     margin-bottom: 1.5rem;
 }
 
@@ -176,15 +188,16 @@ nav div a:hover {
     max-width: 650px;
 
     color: var(--text-secondary);
+
     font-size: 1.1rem;
 
     margin-bottom: 2rem;
 }
 
 
-/* ---------- Hero Skill Tags ---------- */
+/* ---------- Hero Tags ---------- */
 
-#home > div:not(.hero-actions) {
+.hero-tags {
     display: flex;
     flex-wrap: wrap;
     gap: 0.7rem;
@@ -192,16 +205,17 @@ nav div a:hover {
     margin-bottom: 2.5rem;
 }
 
-#home > div:not(.hero-actions) span {
+.hero-tags span {
     padding: 0.45rem 0.9rem;
+
+    background: var(--surface);
 
     border: 1px solid var(--border);
     border-radius: 100px;
 
     color: var(--text-secondary);
-    font-size: 0.85rem;
 
-    background: var(--surface);
+    font-size: 0.85rem;
 }
 
 
@@ -211,7 +225,6 @@ nav div a:hover {
     display: flex;
     flex-wrap: wrap;
     gap: 0.8rem;
-    margin-bottom: 0;
 }
 
 .hero-actions a {
@@ -252,6 +265,8 @@ nav div a:hover {
     border-color: var(--accent);
     color: var(--surface);
 }
+
+
 /* ========================================
    QUICK FACTS
 ======================================== */
@@ -315,6 +330,9 @@ nav div a:hover {
     border-bottom: 1px solid var(--border);
 }
 
+
+/* Section label */
+
 #about > p:first-child {
     color: var(--accent);
 
@@ -323,8 +341,190 @@ nav div a:hover {
     letter-spacing: 0.12em;
 }
 
+
+/* Heading */
+
 #about h2 {
     grid-column: 2;
+
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 1;
+    letter-spacing: -0.045em;
+
+    margin-bottom: 2.5rem;
+}
+
+
+/* About text container */
+
+.about-content {
+    grid-column: 2;
+
+    max-width: 720px;
+}
+
+
+/* Individual paragraphs */
+
+.about-content p {
+    color: var(--text-secondary);
+
+    font-size: 1.08rem;
+    line-height: 1.85;
+
+    margin-bottom: 1.5rem;
+}
+
+.about-content p:first-child {
+    color: var(--text);
+
+    font-size: 1.2rem;
+}
+
+
+/* ========================================
+   EXPERIENCE
+======================================== */
+
+#experience {
+    border-bottom: 1px solid var(--border);
+}
+
+#experience > p:first-child {
+    color: var(--accent);
+
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+
+    margin-bottom: 1.5rem;
+}
+
+#experience > h2 {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 1;
+    letter-spacing: -0.045em;
+
+    margin-bottom: 4rem;
+}
+
+#experience article {
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr;
+    gap: 2rem;
+
+    padding: 2rem 0;
+
+    border-top: 1px solid var(--border);
+}
+
+#experience article h3 {
+    font-size: 1.25rem;
+}
+
+#experience article p {
+    color: var(--text-secondary);
+}
+
+
+/* ========================================
+   SELECTED WORK
+======================================== */
+
+#work {
+    border-bottom: 1px solid var(--border);
+}
+
+#work > p:first-child {
+    color: var(--accent);
+
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+
+    margin-bottom: 1.5rem;
+}
+
+#work > h2 {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 1;
+    letter-spacing: -0.045em;
+
+    margin-bottom: 4rem;
+}
+
+#work article {
+    padding: 2.5rem 0;
+
+    border-top: 1px solid var(--border);
+}
+
+#work article > p:first-child {
+    color: var(--accent);
+
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+
+    margin-bottom: 0.8rem;
+}
+
+#work article h3 {
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    letter-spacing: -0.03em;
+
+    margin-bottom: 0.8rem;
+}
+
+#work article h3 + p {
+    max-width: 650px;
+
+    color: var(--text-secondary);
+
+    margin-bottom: 1.2rem;
+}
+
+#work article a {
+    display: inline-block;
+
+    margin-right: 1.5rem;
+
+    font-size: 0.9rem;
+    font-weight: 700;
+
+    border-bottom: 1px solid var(--text);
+}
+
+#work article a:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+}
+
+
+/* ========================================
+   SKILLS & CAPABILITIES
+======================================== */
+
+#skills {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+
+    border-bottom: 1px solid var(--border);
+}
+
+#skills > p:first-child {
+    grid-column: 1 / -1;
+
+    color: var(--accent);
+
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+}
+
+#skills > h2 {
+    grid-column: 1 / -1;
 
     font-size: clamp(2.5rem, 5vw, 4.5rem);
     line-height: 1;
@@ -333,12 +533,585 @@ nav div a:hover {
     margin-bottom: 2rem;
 }
 
-#about > p:last-child {
-    grid-column: 2;
+#skills > div {
+    padding-top: 1.5rem;
 
-    max-width: 700px;
+    border-top: 1px solid var(--border);
+}
+
+#skills h3 {
+    color: var(--accent-dark);
+
+    font-size: 1.15rem;
+
+    margin-bottom: 1.2rem;
+}
+
+#skills div p {
+    color: var(--text-secondary);
+
+    margin-bottom: 0.65rem;
+}
+
+
+/* ========================================
+   EDUCATION
+======================================== */
+
+#education {
+    border-bottom: 1px solid var(--border);
+}
+
+#education > p:first-child {
+    color: var(--accent);
+
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+
+    margin-bottom: 1.5rem;
+}
+
+#education > h2 {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 1;
+    letter-spacing: -0.045em;
+
+    margin-bottom: 4rem;
+}
+
+#education article {
+    padding-top: 2rem;
+
+    border-top: 1px solid var(--border);
+}
+
+#education article h3 {
+    font-size: 1.6rem;
+    letter-spacing: -0.02em;
+
+    margin-bottom: 0.6rem;
+}
+
+#education article p {
+    color: var(--text-secondary);
+
+    margin-bottom: 0.35rem;
+}
+
+
+/* ========================================
+   CREDENTIALS
+======================================== */
+
+#credentials {
+    border-bottom: 1px solid var(--border);
+}
+
+
+/* Section label */
+
+.section-label {
+    color: var(--accent);
+
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+
+    margin-bottom: 1.5rem;
+}
+
+
+/* ---------- Credentials Heading ---------- */
+
+.credentials-heading {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 4rem;
+    align-items: end;
+
+    margin-bottom: 4rem;
+}
+
+.credentials-heading h2 {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 1;
+    letter-spacing: -0.045em;
+}
+
+.credentials-heading > p {
+    max-width: 420px;
 
     color: var(--text-secondary);
-    font-size: 1.15rem;
-    line-height: 1.8;
+
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+
+/* ---------- Certificate Grid ---------- */
+
+.credentials-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 4rem 2rem;
+}
+
+
+/* ---------- Credential Card ---------- */
+
+.credential-card {
+    min-width: 0;
+
+    padding-top: 1rem;
+
+    border-top: 1px solid var(--border);
+}
+
+
+/* ---------- Certificate Image ---------- */
+
+.credential-image {
+    overflow: hidden;
+
+    margin-bottom: 1.5rem;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+}
+
+.credential-image img {
+    width: 100%;
+    height: auto;
+
+    transition: transform 0.4s ease;
+}
+
+.credential-card:hover .credential-image img {
+    transform: scale(1.015);
+}
+
+
+/* ---------- Credential Information ---------- */
+
+.credential-info > span {
+    display: block;
+
+    color: var(--accent);
+
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+
+    margin-bottom: 0.7rem;
+}
+
+.credential-info h3 {
+    color: var(--text);
+
+    font-size: 1.35rem;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+
+    margin-bottom: 0.4rem;
+}
+
+.credential-info h3 + p {
+    color: var(--text-secondary);
+
+    font-size: 0.95rem;
+
+    margin-bottom: 0.8rem;
+}
+
+
+/* Skills learned from credential */
+
+.credential-skills {
+    max-width: 650px;
+
+    color: var(--text);
+
+    font-size: 0.88rem;
+    line-height: 1.7;
+
+    margin: 0.8rem 0 1.2rem;
+}
+
+
+/* Verify Credential link */
+
+.credential-info a {
+    display: inline-block;
+
+    color: var(--text);
+
+    font-size: 0.9rem;
+    font-weight: 700;
+
+    padding-bottom: 0.15rem;
+
+    border-bottom: 1px solid var(--text);
+
+    transition:
+        color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.credential-info a:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+}
+
+
+/* ---------- Featured Credential ---------- */
+
+.credential-featured {
+    grid-column: 1 / -1;
+}
+
+
+/*
+   The featured ML credential is intentionally
+   larger than the supporting certificates.
+*/
+
+.credential-featured .credential-image {
+    max-width: 850px;
+}
+
+.credential-featured .credential-info {
+    max-width: 850px;
+}
+
+.credential-featured .credential-info h3 {
+    font-size: clamp(1.7rem, 3vw, 2.4rem);
+}
+
+
+/* ========================================
+   LEADERSHIP & ACTIVITIES
+======================================== */
+
+#activities {
+    border-bottom: 1px solid var(--border);
+}
+
+#activities > p:first-child {
+    color: var(--accent);
+
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+
+    margin-bottom: 1.5rem;
+}
+
+#activities > h2 {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 1;
+    letter-spacing: -0.045em;
+
+    margin-bottom: 4rem;
+}
+
+#activities article {
+    padding-top: 2rem;
+
+    border-top: 1px solid var(--border);
+}
+
+#activities article h3 {
+    font-size: 1.5rem;
+
+    margin-bottom: 0.5rem;
+}
+
+#activities article p {
+    color: var(--text-secondary);
+
+    margin-bottom: 0.25rem;
+}
+
+
+/* ========================================
+   CONTACT
+======================================== */
+
+#contact {
+    border-bottom: 1px solid var(--border);
+}
+
+#contact > p:first-child {
+    color: var(--accent);
+
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+
+    margin-bottom: 1.5rem;
+}
+
+#contact h2 {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 1;
+    letter-spacing: -0.045em;
+
+    margin-bottom: 2.5rem;
+}
+
+#contact a {
+    display: inline-block;
+
+    margin-right: 2rem;
+    padding-bottom: 0.2rem;
+
+    font-weight: 600;
+
+    border-bottom: 1px solid var(--text);
+
+    transition:
+        color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+#contact a:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+}
+
+
+/* ========================================
+   FOOTER
+======================================== */
+
+footer {
+    max-width: var(--max-width);
+
+    margin: 0 auto;
+    padding: 2rem;
+
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+
+    color: var(--text-secondary);
+
+    font-size: 0.8rem;
+}
+
+
+/* ========================================
+   RESPONSIVE — TABLET
+======================================== */
+
+@media (max-width: 900px) {
+
+    nav div {
+        gap: 1rem;
+    }
+
+    nav div a {
+        font-size: 0.8rem;
+    }
+
+
+    /* Quick facts */
+
+    .quick-facts {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .fact:nth-child(2) {
+        border-right: none;
+    }
+
+    .fact:nth-child(1),
+    .fact:nth-child(2) {
+        border-bottom: 1px solid var(--border);
+    }
+
+    .fact:first-child {
+        padding-left: 1.8rem;
+    }
+
+
+    /* About */
+
+    #about {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    #about h2,
+    .about-content {
+        grid-column: 1;
+    }
+
+    #about > p:first-child {
+        margin-bottom: 1.5rem;
+    }
+
+
+    /* Experience */
+
+    #experience article {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    #experience article > p:last-child {
+        grid-column: 1 / -1;
+    }
+
+
+    /* Credentials */
+
+    .credentials-heading {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+}
+
+
+/* ========================================
+   RESPONSIVE — MOBILE
+======================================== */
+
+@media (max-width: 700px) {
+
+    :root {
+        --space-xl: 5rem;
+    }
+
+
+    /* Navigation */
+
+    header {
+        position: static;
+    }
+
+    nav {
+        padding: 1.1rem 1.25rem;
+    }
+
+    nav div {
+        display: none;
+    }
+
+
+    /* Sections */
+
+    section {
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+    }
+
+
+    /* Hero */
+
+    #home {
+        min-height: auto;
+
+        padding-top: 6rem;
+        padding-bottom: 6rem;
+    }
+
+    #home h1 {
+        font-size: clamp(3rem, 16vw, 5rem);
+    }
+
+
+    /* Quick facts */
+
+    .quick-facts {
+        grid-template-columns: 1fr;
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+    }
+
+    .fact {
+        min-height: 110px;
+
+        padding: 1.5rem 0;
+
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .fact:first-child {
+        padding-left: 0;
+    }
+
+    .fact:nth-child(2) {
+        border-bottom: 1px solid var(--border);
+    }
+
+    .fact:last-child {
+        border-bottom: none;
+    }
+
+
+    /* Experience */
+
+    #experience article {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+
+    #experience article > p:last-child {
+        grid-column: auto;
+
+        margin-top: 0.75rem;
+    }
+
+
+    /* Skills */
+
+    #skills {
+        grid-template-columns: 1fr;
+    }
+
+    #skills > p:first-child,
+    #skills > h2 {
+        grid-column: 1;
+    }
+
+
+    /* Credentials */
+
+    .credentials-grid {
+        grid-template-columns: 1fr;
+        gap: 3.5rem;
+    }
+
+    .credential-featured {
+        grid-column: 1;
+    }
+
+    .credential-featured .credential-image,
+    .credential-featured .credential-info {
+        max-width: none;
+    }
+
+
+    /* Contact */
+
+    #contact a {
+        margin-right: 1.2rem;
+        margin-bottom: 1rem;
+    }
+
+
+    /* Footer */
+
+    footer {
+        padding: 2rem 1.25rem;
+
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
 }
