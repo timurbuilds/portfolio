@@ -54,6 +54,8 @@ body {
 
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.6;
+
+    -webkit-font-smoothing: antialiased;
 }
 
 main {
@@ -64,6 +66,12 @@ section {
     max-width: var(--max-width);
     margin: 0 auto;
     padding: var(--space-xl) var(--space-md);
+
+    /*
+       Prevents section headings from being hidden
+       underneath the sticky navigation.
+    */
+    scroll-margin-top: 85px;
 }
 
 a {
@@ -77,6 +85,14 @@ img {
 }
 
 
+/* Keyboard accessibility */
+
+a:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+}
+
+
 /* ========================================
    NAVIGATION
 ======================================== */
@@ -86,7 +102,12 @@ header {
     top: 0;
     z-index: 100;
 
-    background: rgba(243, 240, 232, 0.94);
+    /*
+       Solid background prevents content underneath
+       from showing through while scrolling.
+    */
+    background: var(--background);
+
     border-bottom: 1px solid var(--border);
 }
 
@@ -313,6 +334,7 @@ nav div a:hover {
 
 .fact span {
     color: var(--text-secondary);
+
     font-size: 0.88rem;
 }
 
@@ -355,16 +377,13 @@ nav div a:hover {
 }
 
 
-/* About text container */
+/* About text */
 
 .about-content {
     grid-column: 2;
 
     max-width: 720px;
 }
-
-
-/* Individual paragraphs */
 
 .about-content p {
     color: var(--text-secondary);
@@ -493,6 +512,10 @@ nav div a:hover {
     font-weight: 700;
 
     border-bottom: 1px solid var(--text);
+
+    transition:
+        color 0.2s ease,
+        border-color 0.2s ease;
 }
 
 #work article a:hover {
@@ -649,17 +672,22 @@ nav div a:hover {
 }
 
 
-/* ---------- Certificate Grid ---------- */
+/* ---------- Credentials Grid ---------- */
 
 .credentials-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
 
-    gap: 4rem 2rem;
+    /*
+       Three columns allow the supporting credentials
+       to form one clean row on desktop.
+    */
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: 3.5rem 1.5rem;
 }
 
 
-/* ---------- Credential Card ---------- */
+/* ---------- Standard Credential Card ---------- */
 
 .credential-card {
     min-width: 0;
@@ -670,12 +698,19 @@ nav div a:hover {
 }
 
 
-/* ---------- Certificate Image ---------- */
+/* ---------- Certificate Preview ---------- */
 
 .credential-image {
     overflow: hidden;
 
-    margin-bottom: 1.5rem;
+    /*
+       Keeps all supporting certificate previews
+       visually consistent even if the source
+       images have slightly different proportions.
+    */
+    aspect-ratio: 1.42 / 1;
+
+    margin-bottom: 1.4rem;
 
     background: var(--surface);
 
@@ -684,9 +719,11 @@ nav div a:hover {
 
 .credential-image img {
     width: 100%;
-    height: auto;
+    height: 100%;
 
-    transition: transform 0.4s ease;
+    object-fit: contain;
+
+    transition: transform 0.35s ease;
 }
 
 .credential-card:hover .credential-image img {
@@ -701,19 +738,19 @@ nav div a:hover {
 
     color: var(--accent);
 
-    font-size: 0.72rem;
+    font-size: 0.7rem;
     font-weight: 700;
     letter-spacing: 0.13em;
 
-    margin-bottom: 0.7rem;
+    margin-bottom: 0.65rem;
 }
 
 .credential-info h3 {
     color: var(--text);
 
-    font-size: 1.35rem;
+    font-size: 1.25rem;
     line-height: 1.25;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.025em;
 
     margin-bottom: 0.4rem;
 }
@@ -721,37 +758,35 @@ nav div a:hover {
 .credential-info h3 + p {
     color: var(--text-secondary);
 
-    font-size: 0.95rem;
+    font-size: 0.9rem;
 
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.75rem;
 }
 
 
-/* Skills learned from credential */
+/* Skills learned */
 
 .credential-skills {
-    max-width: 650px;
-
     color: var(--text);
 
-    font-size: 0.88rem;
-    line-height: 1.7;
+    font-size: 0.82rem;
+    line-height: 1.65;
 
-    margin: 0.8rem 0 1.2rem;
+    margin: 0.7rem 0 1rem;
 }
 
 
-/* Verify Credential link */
+/* Verify Credential */
 
 .credential-info a {
     display: inline-block;
 
     color: var(--text);
 
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 700;
 
-    padding-bottom: 0.15rem;
+    padding-bottom: 0.12rem;
 
     border-bottom: 1px solid var(--text);
 
@@ -766,28 +801,69 @@ nav div a:hover {
 }
 
 
-/* ---------- Featured Credential ---------- */
+/* ========================================
+   FEATURED CREDENTIAL
+======================================== */
 
 .credential-featured {
     grid-column: 1 / -1;
+
+    /*
+       Featured credential becomes a horizontal
+       editorial card instead of a giant image.
+    */
+    display: grid;
+    grid-template-columns:
+        minmax(0, 1.3fr)
+        minmax(280px, 0.7fr);
+
+    gap: 3rem;
+    align-items: center;
+
+    padding: 1.5rem;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
 }
 
 
-/*
-   The featured ML credential is intentionally
-   larger than the supporting certificates.
-*/
+/* Override standard image proportions */
 
 .credential-featured .credential-image {
-    max-width: 850px;
+    width: 100%;
+    max-width: none;
+
+    aspect-ratio: auto;
+
+    margin: 0;
+
+    border: none;
 }
 
+.credential-featured .credential-image img {
+    width: 100%;
+    height: auto;
+
+    object-fit: contain;
+}
+
+
+/* Featured credential information */
+
 .credential-featured .credential-info {
-    max-width: 850px;
+    max-width: 400px;
 }
 
 .credential-featured .credential-info h3 {
-    font-size: clamp(1.7rem, 3vw, 2.4rem);
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    line-height: 1.08;
+
+    margin-bottom: 0.75rem;
+}
+
+.credential-featured .credential-info h3 + p {
+    font-size: 1rem;
 }
 
 
@@ -909,6 +985,8 @@ footer {
 
 @media (max-width: 900px) {
 
+    /* ---------- Navigation ---------- */
+
     nav div {
         gap: 1rem;
     }
@@ -918,7 +996,7 @@ footer {
     }
 
 
-    /* Quick facts */
+    /* ---------- Quick Facts ---------- */
 
     .quick-facts {
         grid-template-columns: repeat(2, 1fr);
@@ -938,7 +1016,7 @@ footer {
     }
 
 
-    /* About */
+    /* ---------- About ---------- */
 
     #about {
         grid-template-columns: 1fr;
@@ -955,7 +1033,7 @@ footer {
     }
 
 
-    /* Experience */
+    /* ---------- Experience ---------- */
 
     #experience article {
         grid-template-columns: 1fr 1fr;
@@ -966,11 +1044,26 @@ footer {
     }
 
 
-    /* Credentials */
+    /* ---------- Credentials ---------- */
 
     .credentials-heading {
         grid-template-columns: 1fr;
         gap: 1.5rem;
+    }
+
+    .credentials-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .credential-featured {
+        grid-column: 1 / -1;
+
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .credential-featured .credential-info {
+        max-width: 650px;
     }
 
 }
@@ -987,7 +1080,7 @@ footer {
     }
 
 
-    /* Navigation */
+    /* ---------- Navigation ---------- */
 
     header {
         position: static;
@@ -1002,15 +1095,17 @@ footer {
     }
 
 
-    /* Sections */
+    /* ---------- Sections ---------- */
 
     section {
         padding-left: 1.25rem;
         padding-right: 1.25rem;
+
+        scroll-margin-top: 0;
     }
 
 
-    /* Hero */
+    /* ---------- Hero ---------- */
 
     #home {
         min-height: auto;
@@ -1024,10 +1119,11 @@ footer {
     }
 
 
-    /* Quick facts */
+    /* ---------- Quick Facts ---------- */
 
     .quick-facts {
         grid-template-columns: 1fr;
+
         padding-left: 1.25rem;
         padding-right: 1.25rem;
     }
@@ -1054,7 +1150,7 @@ footer {
     }
 
 
-    /* Experience */
+    /* ---------- Experience ---------- */
 
     #experience article {
         grid-template-columns: 1fr;
@@ -1068,7 +1164,7 @@ footer {
     }
 
 
-    /* Skills */
+    /* ---------- Skills ---------- */
 
     #skills {
         grid-template-columns: 1fr;
@@ -1080,7 +1176,7 @@ footer {
     }
 
 
-    /* Credentials */
+    /* ---------- Credentials ---------- */
 
     .credentials-grid {
         grid-template-columns: 1fr;
@@ -1089,6 +1185,8 @@ footer {
 
     .credential-featured {
         grid-column: 1;
+
+        padding: 1rem;
     }
 
     .credential-featured .credential-image,
@@ -1096,8 +1194,16 @@ footer {
         max-width: none;
     }
 
+    .credential-image {
+        aspect-ratio: auto;
+    }
 
-    /* Contact */
+    .credential-image img {
+        height: auto;
+    }
+
+
+    /* ---------- Contact ---------- */
 
     #contact a {
         margin-right: 1.2rem;
@@ -1105,13 +1211,34 @@ footer {
     }
 
 
-    /* Footer */
+    /* ---------- Footer ---------- */
 
     footer {
         padding: 2rem 1.25rem;
 
         flex-direction: column;
         gap: 0.5rem;
+    }
+
+}
+
+
+/* ========================================
+   REDUCED MOTION
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
     }
 
 }
