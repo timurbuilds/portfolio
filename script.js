@@ -1,105 +1,172 @@
 /* ========================================
    TIMUR FILIMONOV — PORTFOLIO
-   Scroll Reveal System
+   Scroll Animation System
 ======================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    const animatedElements = document.querySelectorAll(
-        ".reveal-up, .reveal-left, .reveal-right, .project-reveal, .credential-reveal"
-    );
+
+    /* ========================================
+       ACCESSIBILITY CHECK
+    ========================================= */
+
+    const reducedMotion =
+        window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+        ).matches;
 
 
-    const observer = new IntersectionObserver(
-        (entries, observer) => {
+    if (reducedMotion) {
 
-            entries.forEach((entry) => {
+        document
+            .querySelectorAll(
+                ".reveal-up, " +
+                ".reveal-left, " +
+                ".reveal-right, " +
+                ".reveal-project, " +
+                ".reveal-credential, " +
+                ".reveal-child"
+            )
+            .forEach((element) => {
 
-                if (entry.isIntersecting) {
-
-                    entry.target.classList.add("is-visible");
-
-                    observer.unobserve(entry.target);
-
-                }
+                element.classList.add("is-visible");
 
             });
 
-        },
-        {
-            threshold: 0.14,
-            rootMargin: "0px 0px -60px 0px"
-        }
-    );
+        return;
+    }
 
 
-    animatedElements.forEach((element) => {
-        observer.observe(element);
+    /* ========================================
+       NORMAL SCROLL REVEALS
+    ========================================= */
+
+    const revealElements =
+        document.querySelectorAll(
+            ".reveal-up, " +
+            ".reveal-left, " +
+            ".reveal-right, " +
+            ".reveal-project, " +
+            ".reveal-credential"
+        );
+
+
+    const revealObserver =
+        new IntersectionObserver(
+
+            (entries, observer) => {
+
+                entries.forEach((entry) => {
+
+                    if (!entry.isIntersecting) {
+                        return;
+                    }
+
+
+                    entry.target.classList.add(
+                        "is-visible"
+                    );
+
+
+                    /*
+                        Stop observing after the
+                        animation has happened once.
+                    */
+
+                    observer.unobserve(
+                        entry.target
+                    );
+
+                });
+
+            },
+
+            {
+                threshold: 0.14,
+
+                rootMargin:
+                    "0px 0px -45px 0px"
+            }
+
+        );
+
+
+    revealElements.forEach((element) => {
+
+        revealObserver.observe(element);
+
     });
 
 
 
     /* ========================================
        STAGGERED GROUPS
-    ======================================== */
 
-    const groups = document.querySelectorAll(".reveal-group");
+       Used for:
+       - Quick facts
+       - Skills
+    ========================================= */
 
-
-    const groupObserver = new IntersectionObserver(
-        (entries, observer) => {
-
-            entries.forEach((entry) => {
-
-                if (!entry.isIntersecting) {
-                    return;
-                }
+    const staggerGroups =
+        document.querySelectorAll(
+            ".reveal-stagger"
+        );
 
 
-                const items =
-                    entry.target.querySelectorAll(".reveal-item");
+    const staggerObserver =
+        new IntersectionObserver(
+
+            (entries, observer) => {
+
+                entries.forEach((entry) => {
+
+                    if (!entry.isIntersecting) {
+                        return;
+                    }
 
 
-                items.forEach((item, index) => {
+                    const children =
+                        entry.target.querySelectorAll(
+                            ".reveal-child"
+                        );
 
-                    setTimeout(() => {
 
-                        item.classList.add("is-visible");
+                    children.forEach(
+                        (child, index) => {
 
-                    }, index * 110);
+                            setTimeout(() => {
+
+                                child.classList.add(
+                                    "is-visible"
+                                );
+
+                            }, index * 100);
+
+                        }
+                    );
+
+
+                    observer.unobserve(
+                        entry.target
+                    );
 
                 });
 
+            },
 
-                observer.unobserve(entry.target);
+            {
+                threshold: 0.12,
 
-            });
+                rootMargin:
+                    "0px 0px -30px 0px"
+            }
 
-        },
-        {
-            threshold: 0.15
-        }
-    );
-
-
-    groups.forEach((group) => {
-        groupObserver.observe(group);
-    });
+        );
 
 
+    staggerGroups.forEach((group) => {
 
-    /* ========================================
-       CREDENTIAL STAGGER
-    ======================================== */
-
-    const credentials =
-        document.querySelectorAll(".credential-reveal");
-
-
-    credentials.forEach((credential, index) => {
-
-        credential.style.transitionDelay =
-            `${Math.min(index * 80, 240)}ms`;
+        staggerObserver.observe(group);
 
     });
 
