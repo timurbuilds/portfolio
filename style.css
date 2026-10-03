@@ -9,7 +9,6 @@
 ======================================== */
 
 :root {
-    /* Classic menswear palette */
     --background: #F3F0E8;      /* Warm ivory */
     --surface: #FAF8F2;         /* Soft cream */
     --text: #18222D;            /* Deep navy */
@@ -67,10 +66,6 @@ section {
     margin: 0 auto;
     padding: var(--space-xl) var(--space-md);
 
-    /*
-       Prevents section headings from being hidden
-       underneath the sticky navigation.
-    */
     scroll-margin-top: 85px;
 }
 
@@ -84,12 +79,28 @@ img {
     max-width: 100%;
 }
 
-
-/* Keyboard accessibility */
+figure {
+    margin: 0;
+}
 
 a:focus-visible {
     outline: 2px solid var(--accent);
     outline-offset: 4px;
+}
+
+
+/* ========================================
+   SHARED SECTION ELEMENTS
+======================================== */
+
+.section-label {
+    color: var(--accent);
+
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+
+    margin-bottom: 1.5rem;
 }
 
 
@@ -102,10 +113,6 @@ header {
     top: 0;
     z-index: 100;
 
-    /*
-       Solid background prevents content underneath
-       from showing through while scrolling.
-    */
     background: var(--background);
 
     border-bottom: 1px solid var(--border);
@@ -121,6 +128,7 @@ nav {
     align-items: center;
 }
 
+.nav-logo,
 nav > a {
     color: var(--text);
 
@@ -129,11 +137,13 @@ nav > a {
     letter-spacing: -0.03em;
 }
 
+.nav-links,
 nav div {
     display: flex;
     gap: 2rem;
 }
 
+.nav-links a,
 nav div a {
     color: var(--text-secondary);
 
@@ -142,6 +152,7 @@ nav div a {
     transition: color 0.2s ease;
 }
 
+.nav-links a:hover,
 nav div a:hover {
     color: var(--accent);
 }
@@ -160,9 +171,6 @@ nav div a:hover {
     align-items: flex-start;
 }
 
-
-/* Small text above name */
-
 #home > p:first-child {
     color: var(--accent);
 
@@ -173,9 +181,6 @@ nav div a:hover {
     margin-bottom: 1.5rem;
 }
 
-
-/* Name */
-
 #home h1 {
     color: var(--text);
 
@@ -185,9 +190,6 @@ nav div a:hover {
 
     margin-bottom: 1.5rem;
 }
-
-
-/* Main statement */
 
 #home h2 {
     max-width: 800px;
@@ -201,9 +203,6 @@ nav div a:hover {
 
     margin-bottom: 1.5rem;
 }
-
-
-/* Supporting description */
 
 #home h2 + p {
     max-width: 650px;
@@ -259,32 +258,26 @@ nav div a:hover {
     transition:
         background 0.2s ease,
         color 0.2s ease,
-        border-color 0.2s ease;
+        border-color 0.2s ease,
+        transform 0.2s ease;
 }
-
-
-/* Primary button */
 
 .hero-actions a:first-child {
     background: var(--text);
     color: var(--background);
 }
 
-
-/* Secondary button */
-
 .hero-actions a:last-child {
     background: transparent;
     color: var(--text);
 }
 
-
-/* Button hover */
-
 .hero-actions a:hover {
     background: var(--accent);
     border-color: var(--accent);
     color: var(--surface);
+
+    transform: translateY(-2px);
 }
 
 
@@ -344,45 +337,87 @@ nav div a:hover {
 ======================================== */
 
 #about {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    column-gap: 5rem;
-    align-items: start;
-
     border-bottom: 1px solid var(--border);
 }
 
 
-/* Section label */
+/* ---------- Heading ---------- */
 
-#about > p:first-child {
-    color: var(--accent);
+.about-heading {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
 
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
+    margin-bottom: 3.5rem;
 }
 
-
-/* Heading */
-
-#about h2 {
+.about-heading h2 {
     grid-column: 2;
 
     font-size: clamp(2.5rem, 5vw, 4.5rem);
     line-height: 1;
     letter-spacing: -0.045em;
-
-    margin-bottom: 2.5rem;
 }
 
 
-/* About text */
+/* ---------- Photo + Text Layout ---------- */
+
+.about-layout {
+    display: grid;
+
+    /*
+       Portrait gets slightly less width than the text.
+       This keeps the photograph important without
+       turning the page into a photography portfolio.
+    */
+    grid-template-columns:
+        minmax(280px, 0.85fr)
+        minmax(0, 1.4fr);
+
+    gap: clamp(3rem, 7vw, 6rem);
+
+    align-items: start;
+}
+
+
+/* ---------- Chicago Portrait ---------- */
+
+.about-photo {
+    position: relative;
+}
+
+.about-photo img {
+    width: 100%;
+
+    /*
+       Creates a deliberate editorial portrait crop.
+    */
+    aspect-ratio: 4 / 5;
+
+    object-fit: cover;
+
+    /*
+       Keeps Timur's upper body and face comfortably
+       within the crop.
+    */
+    object-position: center 35%;
+
+    border: 1px solid var(--border);
+}
+
+.about-photo figcaption {
+    color: var(--text-secondary);
+
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+
+    margin-top: 0.7rem;
+}
+
+
+/* ---------- About Text ---------- */
 
 .about-content {
-    grid-column: 2;
-
-    max-width: 720px;
+    max-width: 680px;
 }
 
 .about-content p {
@@ -397,7 +432,8 @@ nav div a:hover {
 .about-content p:first-child {
     color: var(--text);
 
-    font-size: 1.2rem;
+    font-size: 1.22rem;
+    line-height: 1.75;
 }
 
 
@@ -407,16 +443,6 @@ nav div a:hover {
 
 #experience {
     border-bottom: 1px solid var(--border);
-}
-
-#experience > p:first-child {
-    color: var(--accent);
-
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-
-    margin-bottom: 1.5rem;
 }
 
 #experience > h2 {
@@ -429,18 +455,33 @@ nav div a:hover {
 
 #experience article {
     display: grid;
-    grid-template-columns: 1fr 1fr 2fr;
-    gap: 2rem;
+    grid-template-columns: minmax(220px, 0.8fr) minmax(0, 1.5fr);
 
-    padding: 2rem 0;
+    gap: 4rem;
+
+    padding: 2.5rem 0;
 
     border-top: 1px solid var(--border);
 }
 
+.experience-role h3,
 #experience article h3 {
-    font-size: 1.25rem;
+    font-size: 1.3rem;
+    letter-spacing: -0.02em;
+
+    margin-bottom: 0.3rem;
 }
 
+.experience-role p {
+    color: var(--accent);
+    font-size: 0.9rem;
+}
+
+.experience-description {
+    max-width: 680px;
+}
+
+.experience-description p,
 #experience article p {
     color: var(--text-secondary);
 }
@@ -454,16 +495,6 @@ nav div a:hover {
     border-bottom: 1px solid var(--border);
 }
 
-#work > p:first-child {
-    color: var(--accent);
-
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-
-    margin-bottom: 1.5rem;
-}
-
 #work > h2 {
     font-size: clamp(2.5rem, 5vw, 4.5rem);
     line-height: 1;
@@ -472,12 +503,35 @@ nav div a:hover {
     margin-bottom: 4rem;
 }
 
+
+/* ---------- Project Card ---------- */
+
+.project-card,
 #work article {
-    padding: 2.5rem 0;
+    display: grid;
+    grid-template-columns: 100px minmax(0, 1fr);
+
+    gap: 2rem;
+
+    padding: 3rem 0;
 
     border-top: 1px solid var(--border);
 }
 
+.project-number {
+    color: var(--border);
+
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.04em;
+}
+
+.project-content {
+    max-width: 760px;
+}
+
+.project-type,
 #work article > p:first-child {
     color: var(--accent);
 
@@ -488,28 +542,38 @@ nav div a:hover {
     margin-bottom: 0.8rem;
 }
 
+.project-content h3,
 #work article h3 {
     font-size: clamp(1.6rem, 3vw, 2.4rem);
     letter-spacing: -0.03em;
+    line-height: 1.15;
 
     margin-bottom: 0.8rem;
 }
 
+.project-content > p:not(.project-type),
 #work article h3 + p {
     max-width: 650px;
 
     color: var(--text-secondary);
 
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.4rem;
 }
 
+.project-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.project-links a,
 #work article a {
     display: inline-block;
 
-    margin-right: 1.5rem;
-
     font-size: 0.9rem;
     font-weight: 700;
+
+    padding-bottom: 0.1rem;
 
     border-bottom: 1px solid var(--text);
 
@@ -518,6 +582,7 @@ nav div a:hover {
         border-color 0.2s ease;
 }
 
+.project-links a:hover,
 #work article a:hover {
     color: var(--accent);
     border-color: var(--accent);
@@ -531,19 +596,15 @@ nav div a:hover {
 #skills {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+
     gap: 2rem;
 
     border-bottom: 1px solid var(--border);
 }
 
+#skills > .section-label,
 #skills > p:first-child {
     grid-column: 1 / -1;
-
-    color: var(--accent);
-
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
 }
 
 #skills > h2 {
@@ -556,10 +617,25 @@ nav div a:hover {
     margin-bottom: 2rem;
 }
 
+.skill-group,
 #skills > div {
+    position: relative;
+
     padding-top: 1.5rem;
 
     border-top: 1px solid var(--border);
+}
+
+.skill-group > span {
+    display: block;
+
+    color: var(--accent);
+
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+
+    margin-bottom: 1.4rem;
 }
 
 #skills h3 {
@@ -585,16 +661,6 @@ nav div a:hover {
     border-bottom: 1px solid var(--border);
 }
 
-#education > p:first-child {
-    color: var(--accent);
-
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-
-    margin-bottom: 1.5rem;
-}
-
 #education > h2 {
     font-size: clamp(2.5rem, 5vw, 4.5rem);
     line-height: 1;
@@ -603,23 +669,137 @@ nav div a:hover {
     margin-bottom: 4rem;
 }
 
-#education article {
-    padding-top: 2rem;
+
+/* ---------- Education Card ---------- */
+
+.education-card {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.5fr)
+        minmax(240px, 0.6fr);
+
+    gap: 4rem;
+
+    align-items: center;
+
+    padding: 3rem 0;
 
     border-top: 1px solid var(--border);
 }
 
-#education article h3 {
-    font-size: 1.6rem;
-    letter-spacing: -0.02em;
-
-    margin-bottom: 0.6rem;
+.education-content {
+    max-width: 720px;
 }
 
-#education article p {
+.education-year {
+    display: block;
+
+    color: var(--accent);
+
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+
+    margin-bottom: 1rem;
+}
+
+.education-content h3,
+#education article h3 {
+    color: var(--text);
+
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    line-height: 1.15;
+    letter-spacing: -0.035em;
+
+    margin-bottom: 0.7rem;
+}
+
+.education-degree {
     color: var(--text-secondary);
 
-    margin-bottom: 0.35rem;
+    font-size: 1.05rem;
+
+    margin-bottom: 2rem;
+}
+
+
+/* ---------- GPA / Graduation ---------- */
+
+.education-details {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 3rem;
+
+    padding-top: 1.5rem;
+
+    border-top: 1px solid var(--border);
+}
+
+.education-details div {
+    display: flex;
+    flex-direction: column;
+}
+
+.education-details strong {
+    color: var(--text);
+
+    font-size: 1.05rem;
+
+    margin-bottom: 0.2rem;
+}
+
+.education-details span {
+    color: var(--text-secondary);
+
+    font-size: 0.8rem;
+}
+
+
+/* ---------- ISU Logo ---------- */
+
+.education-logo {
+    min-height: 240px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 2rem;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+}
+
+.education-logo img {
+    width: 100%;
+    max-width: 210px;
+    max-height: 190px;
+
+    object-fit: contain;
+}
+
+
+/* Temporary placeholder until PNG is uploaded */
+
+.education-logo-placeholder span {
+    color: var(--accent);
+
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+
+    margin-bottom: 0.25rem;
+}
+
+.education-logo-placeholder strong {
+    color: var(--text);
+
+    font-size: 1.2rem;
+    letter-spacing: 0.05em;
 }
 
 
@@ -632,24 +812,12 @@ nav div a:hover {
 }
 
 
-/* Section label */
-
-.section-label {
-    color: var(--accent);
-
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-
-    margin-bottom: 1.5rem;
-}
-
-
 /* ---------- Credentials Heading ---------- */
 
 .credentials-heading {
     display: grid;
     grid-template-columns: 1.5fr 1fr;
+
     gap: 4rem;
     align-items: end;
 
@@ -676,18 +844,13 @@ nav div a:hover {
 
 .credentials-grid {
     display: grid;
-
-    /*
-       Three columns allow the supporting credentials
-       to form one clean row on desktop.
-    */
     grid-template-columns: repeat(3, minmax(0, 1fr));
 
     gap: 3.5rem 1.5rem;
 }
 
 
-/* ---------- Standard Credential Card ---------- */
+/* ---------- Standard Credential ---------- */
 
 .credential-card {
     min-width: 0;
@@ -697,17 +860,9 @@ nav div a:hover {
     border-top: 1px solid var(--border);
 }
 
-
-/* ---------- Certificate Preview ---------- */
-
 .credential-image {
     overflow: hidden;
 
-    /*
-       Keeps all supporting certificate previews
-       visually consistent even if the source
-       images have slightly different proportions.
-    */
     aspect-ratio: 1.42 / 1;
 
     margin-bottom: 1.4rem;
@@ -729,9 +884,6 @@ nav div a:hover {
 .credential-card:hover .credential-image img {
     transform: scale(1.015);
 }
-
-
-/* ---------- Credential Information ---------- */
 
 .credential-info > span {
     display: block;
@@ -763,9 +915,6 @@ nav div a:hover {
     margin-bottom: 0.75rem;
 }
 
-
-/* Skills learned */
-
 .credential-skills {
     color: var(--text);
 
@@ -774,9 +923,6 @@ nav div a:hover {
 
     margin: 0.7rem 0 1rem;
 }
-
-
-/* Verify Credential */
 
 .credential-info a {
     display: inline-block;
@@ -808,16 +954,14 @@ nav div a:hover {
 .credential-featured {
     grid-column: 1 / -1;
 
-    /*
-       Featured credential becomes a horizontal
-       editorial card instead of a giant image.
-    */
     display: grid;
+
     grid-template-columns:
         minmax(0, 1.3fr)
         minmax(280px, 0.7fr);
 
     gap: 3rem;
+
     align-items: center;
 
     padding: 1.5rem;
@@ -826,9 +970,6 @@ nav div a:hover {
 
     border: 1px solid var(--border);
 }
-
-
-/* Override standard image proportions */
 
 .credential-featured .credential-image {
     width: 100%;
@@ -847,9 +988,6 @@ nav div a:hover {
 
     object-fit: contain;
 }
-
-
-/* Featured credential information */
 
 .credential-featured .credential-info {
     max-width: 400px;
@@ -875,16 +1013,6 @@ nav div a:hover {
     border-bottom: 1px solid var(--border);
 }
 
-#activities > p:first-child {
-    color: var(--accent);
-
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-
-    margin-bottom: 1.5rem;
-}
-
 #activities > h2 {
     font-size: clamp(2.5rem, 5vw, 4.5rem);
     line-height: 1;
@@ -893,22 +1021,101 @@ nav div a:hover {
     margin-bottom: 4rem;
 }
 
-#activities article {
+
+/* ---------- Featured Activity ---------- */
+
+.activity-feature {
+    display: grid;
+
+    /*
+       Landscape competition photo receives more
+       horizontal room than the accompanying copy.
+    */
+    grid-template-columns:
+        minmax(0, 1.35fr)
+        minmax(280px, 0.65fr);
+
+    gap: clamp(2.5rem, 6vw, 5rem);
+
+    align-items: center;
+
     padding-top: 2rem;
 
     border-top: 1px solid var(--border);
 }
 
-#activities article h3 {
-    font-size: 1.5rem;
 
-    margin-bottom: 0.5rem;
+/* ---------- Taekwondo Photo ---------- */
+
+.activity-image {
+    overflow: hidden;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
 }
 
-#activities article p {
+.activity-image img {
+    width: 100%;
+
+    aspect-ratio: 16 / 10;
+
+    object-fit: cover;
+
+    /*
+       Slightly biases the crop upward so the people
+       remain the focal point rather than the podium.
+    */
+    object-position: center 40%;
+
+    transition: transform 0.35s ease;
+}
+
+.activity-feature:hover .activity-image img {
+    transform: scale(1.015);
+}
+
+
+/* ---------- Activity Information ---------- */
+
+.activity-content {
+    max-width: 420px;
+}
+
+.activity-content > span {
+    display: block;
+
+    color: var(--accent);
+
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+
+    margin-bottom: 0.9rem;
+}
+
+.activity-content h3 {
+    color: var(--text);
+
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    line-height: 1.1;
+    letter-spacing: -0.035em;
+
+    margin-bottom: 0.4rem;
+}
+
+.activity-role {
+    color: var(--accent-dark) !important;
+
+    font-weight: 600;
+
+    margin-bottom: 1.2rem !important;
+}
+
+.activity-content > p:last-child {
     color: var(--text-secondary);
 
-    margin-bottom: 0.25rem;
+    line-height: 1.75;
 }
 
 
@@ -920,28 +1127,36 @@ nav div a:hover {
     border-bottom: 1px solid var(--border);
 }
 
-#contact > p:first-child {
-    color: var(--accent);
-
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-
-    margin-bottom: 1.5rem;
-}
-
 #contact h2 {
     font-size: clamp(2.5rem, 5vw, 4.5rem);
     line-height: 1;
     letter-spacing: -0.045em;
 
-    margin-bottom: 2.5rem;
+    margin-bottom: 1.5rem;
 }
 
+.contact-intro {
+    max-width: 600px;
+
+    color: var(--text-secondary);
+
+    font-size: 1.05rem;
+    line-height: 1.7;
+
+    margin-bottom: 2rem;
+}
+
+.contact-links {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 2rem;
+}
+
+.contact-links a,
 #contact a {
     display: inline-block;
 
-    margin-right: 2rem;
     padding-bottom: 0.2rem;
 
     font-weight: 600;
@@ -953,6 +1168,7 @@ nav div a:hover {
         border-color 0.2s ease;
 }
 
+.contact-links a:hover,
 #contact a:hover {
     color: var(--accent);
     border-color: var(--accent);
@@ -987,10 +1203,12 @@ footer {
 
     /* ---------- Navigation ---------- */
 
+    .nav-links,
     nav div {
         gap: 1rem;
     }
 
+    .nav-links a,
     nav div a {
         font-size: 0.8rem;
     }
@@ -1018,29 +1236,36 @@ footer {
 
     /* ---------- About ---------- */
 
-    #about {
+    .about-heading {
         grid-template-columns: 1fr;
-        gap: 0;
     }
 
-    #about h2,
-    .about-content {
+    .about-heading h2 {
         grid-column: 1;
     }
 
-    #about > p:first-child {
-        margin-bottom: 1.5rem;
+    .about-layout {
+        grid-template-columns: minmax(240px, 0.8fr) 1.2fr;
+
+        gap: 3rem;
     }
 
 
     /* ---------- Experience ---------- */
 
     #experience article {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 0.8fr 1.2fr;
+
+        gap: 2rem;
     }
 
-    #experience article > p:last-child {
-        grid-column: 1 / -1;
+
+    /* ---------- Education ---------- */
+
+    .education-card {
+        grid-template-columns: 1.3fr 0.7fr;
+
+        gap: 2rem;
     }
 
 
@@ -1048,6 +1273,7 @@ footer {
 
     .credentials-heading {
         grid-template-columns: 1fr;
+
         gap: 1.5rem;
     }
 
@@ -1059,11 +1285,21 @@ footer {
         grid-column: 1 / -1;
 
         grid-template-columns: 1fr;
+
         gap: 1.5rem;
     }
 
     .credential-featured .credential-info {
         max-width: 650px;
+    }
+
+
+    /* ---------- Activities ---------- */
+
+    .activity-feature {
+        grid-template-columns: 1.2fr 0.8fr;
+
+        gap: 2rem;
     }
 
 }
@@ -1090,6 +1326,7 @@ footer {
         padding: 1.1rem 1.25rem;
     }
 
+    .nav-links,
     nav div {
         display: none;
     }
@@ -1150,17 +1387,47 @@ footer {
     }
 
 
+    /* ---------- About ---------- */
+
+    .about-heading {
+        margin-bottom: 2.5rem;
+    }
+
+    .about-layout {
+        grid-template-columns: 1fr;
+
+        gap: 2.5rem;
+    }
+
+    .about-photo {
+        max-width: 520px;
+    }
+
+    .about-photo img {
+        aspect-ratio: 4 / 5;
+    }
+
+
     /* ---------- Experience ---------- */
 
     #experience article {
         grid-template-columns: 1fr;
-        gap: 0.5rem;
+
+        gap: 1rem;
     }
 
-    #experience article > p:last-child {
-        grid-column: auto;
 
-        margin-top: 0.75rem;
+    /* ---------- Selected Work ---------- */
+
+    .project-card,
+    #work article {
+        grid-template-columns: 1fr;
+
+        gap: 1.2rem;
+    }
+
+    .project-number {
+        font-size: 1.5rem;
     }
 
 
@@ -1170,9 +1437,27 @@ footer {
         grid-template-columns: 1fr;
     }
 
+    #skills > .section-label,
     #skills > p:first-child,
     #skills > h2 {
         grid-column: 1;
+    }
+
+
+    /* ---------- Education ---------- */
+
+    .education-card {
+        grid-template-columns: 1fr;
+
+        gap: 2.5rem;
+    }
+
+    .education-details {
+        gap: 2rem;
+    }
+
+    .education-logo {
+        min-height: 200px;
     }
 
 
@@ -1180,6 +1465,7 @@ footer {
 
     .credentials-grid {
         grid-template-columns: 1fr;
+
         gap: 3.5rem;
     }
 
@@ -1203,11 +1489,23 @@ footer {
     }
 
 
+    /* ---------- Activities ---------- */
+
+    .activity-feature {
+        grid-template-columns: 1fr;
+
+        gap: 2rem;
+    }
+
+    .activity-content {
+        max-width: 600px;
+    }
+
+
     /* ---------- Contact ---------- */
 
-    #contact a {
-        margin-right: 1.2rem;
-        margin-bottom: 1rem;
+    .contact-links {
+        gap: 1.2rem;
     }
 
 
@@ -1217,6 +1515,7 @@ footer {
         padding: 2rem 1.25rem;
 
         flex-direction: column;
+
         gap: 0.5rem;
     }
 
