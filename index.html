@@ -5,10 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Timur Filimonov | Portfolio</title>
+    <meta
+        name="description"
+        content="Portfolio of Timur Filimonov, an Illinois State University Management student focused on business operations, analytics, leadership, and technology."
+    >
+
+    <title>Timur Filimonov | Business Operations, Analytics & Technology</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
+
 
 <body>
 
@@ -17,24 +23,41 @@
     ========================================= -->
 
     <header>
-        <nav>
-            <a href="#home">TF</a>
 
-            <div>
+        <nav aria-label="Main navigation">
+
+            <a href="#home" class="nav-logo" aria-label="Timur Filimonov home">
+                TF
+            </a>
+
+            <div class="nav-links">
+
                 <a href="#about">About</a>
+
                 <a href="#experience">Experience</a>
+
                 <a href="#work">Selected Work</a>
+
                 <a href="#skills">Skills</a>
+
                 <a href="#education">Education</a>
+
                 <a href="#credentials">Credentials</a>
+
                 <a href="#activities">Activities</a>
+
                 <a href="#contact">Contact</a>
+
             </div>
+
         </nav>
+
     </header>
 
 
+
     <main>
+
 
         <!-- ========================================
              HERO
@@ -42,9 +65,13 @@
 
         <section id="home">
 
-            <p>BUSINESS OPERATIONS · ANALYTICS · TECHNOLOGY</p>
+            <p>
+                BUSINESS OPERATIONS · ANALYTICS · TECHNOLOGY
+            </p>
 
-            <h1>Timur Filimonov</h1>
+            <h1>
+                Timur Filimonov
+            </h1>
 
             <h2>
                 Turning business problems into structured,
@@ -56,51 +83,82 @@
                 business operations, analytical decision-making, and technology.
             </p>
 
+
             <div class="hero-tags">
+
                 <span>Operations</span>
+
                 <span>Strategy</span>
+
                 <span>Data Analysis</span>
+
                 <span>Leadership</span>
+
                 <span>Technology</span>
+
             </div>
+
 
             <div class="hero-actions">
-                <a href="#work">Explore My Work</a>
-                <a href="#">View Résumé</a>
+
+                <a href="#work">
+                    Explore My Work
+                </a>
+
+                <!-- Replace # with your resume file when uploaded -->
+                <a href="#">
+                    View Résumé
+                </a>
+
             </div>
 
-            <!-- Professional portrait can go here later -->
-
         </section>
+
 
 
         <!-- ========================================
              QUICK FACTS
         ========================================= -->
 
-        <section class="quick-facts">
+        <section class="quick-facts" aria-label="Quick facts">
 
             <div class="fact">
+
                 <strong>4.00</strong>
+
                 <span>GPA</span>
+
             </div>
 
+
             <div class="fact">
+
                 <strong>Management</strong>
+
                 <span>Organizational Leadership</span>
+
             </div>
 
+
             <div class="fact">
+
                 <strong>Global</strong>
+
                 <span>Perspective</span>
+
             </div>
 
+
             <div class="fact">
+
                 <strong>Analytics</strong>
+
                 <span>Business Decision-Making</span>
+
             </div>
 
         </section>
+
 
 
         <!-- ========================================
@@ -109,38 +167,76 @@
 
         <section id="about">
 
-            <p>01 — ABOUT</p>
+            <p class="section-label">
+                01 — ABOUT
+            </p>
 
-            <h2>About Me</h2>
 
-            <div class="about-content">
+            <div class="about-heading">
 
-                <p>
-                    I am a Management student at Illinois State University with a
-                    generalist mindset and a strong interest in leadership,
-                    analytics, and emerging technology.
-                </p>
+                <h2>
+                    About Me
+                </h2>
 
-                <p>
-                    I am most engaged when I can break down a complex problem,
-                    work with numbers, and find a practical solution. My management
-                    experience has given me exposure to different parts of a business,
-                    from front-desk operations and fitness staff to leadership and
-                    financial processes, while teaching me how communication,
-                    motivation, and human behavior affect performance.
-                </p>
+            </div>
 
-                <p>
-                    I am particularly interested in how AI and other technologies
-                    can improve processes, reduce costs, and solve real business
-                    problems. I bring dedication, adaptability, and ambition to my
-                    work, and I am always looking for a better way to understand a
-                    problem and improve the outcome.
-                </p>
+
+            <div class="about-layout">
+
+
+                <!-- Chicago Portrait -->
+
+                <figure class="about-photo">
+
+                    <img
+                        src="images/profile-chicago.jpg"
+                        alt="Timur Filimonov in downtown Chicago"
+                    >
+
+                    <figcaption>
+                        Chicago, Illinois
+                    </figcaption>
+
+                </figure>
+
+
+
+                <!-- About Text -->
+
+                <div class="about-content">
+
+                    <p>
+                        I am a Management student at Illinois State University
+                        with a generalist mindset and a strong interest in
+                        leadership, analytics, and emerging technology.
+                    </p>
+
+                    <p>
+                        I am most engaged when I can break down a complex
+                        problem, work with numbers, and find a practical
+                        solution. My management experience has given me
+                        exposure to different parts of a business, from
+                        front-desk operations and fitness staff to leadership
+                        and financial processes, while teaching me how
+                        communication, motivation, and human behavior affect
+                        performance.
+                    </p>
+
+                    <p>
+                        I am particularly interested in how AI and other
+                        technologies can improve processes, reduce costs,
+                        and solve real business problems. I bring dedication,
+                        adaptability, and ambition to my work, and I am always
+                        looking for a better way to understand a problem and
+                        improve the outcome.
+                    </p>
+
+                </div>
 
             </div>
 
         </section>
+
 
 
         <!-- ========================================
@@ -149,36 +245,78 @@
 
         <section id="experience">
 
-            <p>02 — EXPERIENCE</p>
+            <p class="section-label">
+                02 — EXPERIENCE
+            </p>
 
-            <h2>Experience</h2>
+            <h2>
+                Experience
+            </h2>
+
+
+            <!-- Manager -->
 
             <article>
 
-                <h3>Manager</h3>
+                <div class="experience-role">
 
-                <p>Fitness Facility</p>
+                    <h3>
+                        Manager
+                    </h3>
 
-                <p>
-                    Experience details will go here.
-                </p>
+                    <p>
+                        Fitness Facility
+                    </p>
+
+                </div>
+
+
+                <div class="experience-description">
+
+                    <p>
+                        Managed day-to-day operations while working across
+                        staff coordination, customer service, communication,
+                        and business processes.
+                    </p>
+
+                </div>
 
             </article>
 
 
+
+            <!-- Marketing Assistant -->
+
             <article>
 
-                <h3>Marketing Assistant</h3>
+                <div class="experience-role">
 
-                <p>Fitness Club Diana</p>
+                    <h3>
+                        Marketing Assistant
+                    </h3>
 
-                <p>
-                    Experience details will go here.
-                </p>
+                    <p>
+                        Fitness Club Diana
+                    </p>
+
+                </div>
+
+
+                <div class="experience-description">
+
+                    <p>
+                        Supported marketing and business activities for a
+                        fitness organization serving more than 600 clients,
+                        including promotion of programs and coordination
+                        around events and customer engagement.
+                    </p>
+
+                </div>
 
             </article>
 
         </section>
+
 
 
         <!-- ========================================
@@ -187,45 +325,105 @@
 
         <section id="work">
 
-            <p>03 — SELECTED WORK</p>
+            <p class="section-label">
+                03 — SELECTED WORK
+            </p>
 
-            <h2>Selected Work</h2>
+            <h2>
+                Selected Work
+            </h2>
+
 
 
             <!-- Machine Learning Project -->
 
-            <article>
+            <article class="project-card">
 
-                <p>MACHINE LEARNING · ACADEMIC PROJECT</p>
+                <div class="project-number">
+                    01
+                </div>
 
-                <h3>Machine Learning Project</h3>
 
-                <p>
-                    Project description will go here.
-                </p>
+                <div class="project-content">
 
-                <a href="#">View Case Study</a>
-                <a href="#">View Presentation</a>
+                    <p class="project-type">
+                        MACHINE LEARNING · ACADEMIC PROJECT
+                    </p>
+
+                    <h3>
+                        Machine Learning Project
+                    </h3>
+
+                    <p>
+                        Applied machine-learning concepts to analyze data,
+                        develop a model, and evaluate results. A complete
+                        project case study is currently being developed.
+                    </p>
+
+
+                    <div class="project-links">
+
+                        <a href="#">
+                            View Case Study
+                        </a>
+
+                        <a href="#">
+                            View Presentation
+                        </a>
+
+                    </div>
+
+                </div>
 
             </article>
+
 
 
             <!-- Portfolio Project -->
 
-            <article>
+            <article class="project-card">
 
-                <p>WEB DEVELOPMENT · PERSONAL PROJECT</p>
+                <div class="project-number">
+                    02
+                </div>
 
-                <h3>Professional Portfolio</h3>
 
-                <p>
-                    Designed and developed this professional portfolio
-                    using HTML, CSS, GitHub, and GitHub Pages.
-                </p>
+                <div class="project-content">
+
+                    <p class="project-type">
+                        WEB DEVELOPMENT · PERSONAL PROJECT
+                    </p>
+
+                    <h3>
+                        Professional Portfolio
+                    </h3>
+
+                    <p>
+                        Designed and developed this portfolio from the ground
+                        up using HTML, CSS, Git, GitHub, and GitHub Pages,
+                        combining professional communication with responsive
+                        web design.
+                    </p>
+
+
+                    <div class="project-links">
+
+                        <a
+                            href="https://github.com/timurbuilds/portfolio"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            View Repository ↗
+                        </a>
+
+                    </div>
+
+                </div>
 
             </article>
 
         </section>
+
 
 
         <!-- ========================================
@@ -234,47 +432,82 @@
 
         <section id="skills">
 
-            <p>04 — CAPABILITIES</p>
+            <p class="section-label">
+                04 — CAPABILITIES
+            </p>
 
-            <h2>Skills & Capabilities</h2>
+            <h2>
+                Skills & Capabilities
+            </h2>
 
 
-            <div>
 
-                <h3>Business</h3>
+            <!-- Business -->
+
+            <div class="skill-group">
+
+                <span>01</span>
+
+                <h3>
+                    Business
+                </h3>
 
                 <p>Business Operations</p>
+
                 <p>Strategic Analysis</p>
+
                 <p>Leadership</p>
+
                 <p>Project Management</p>
 
             </div>
 
 
-            <div>
 
-                <h3>Analytical</h3>
+            <!-- Analytical -->
+
+            <div class="skill-group">
+
+                <span>02</span>
+
+                <h3>
+                    Analytical
+                </h3>
 
                 <p>Microsoft Excel</p>
+
                 <p>Financial Analysis</p>
+
                 <p>Managerial Accounting</p>
+
                 <p>Data Interpretation</p>
 
             </div>
 
 
-            <div>
 
-                <h3>Technology</h3>
+            <!-- Technology -->
+
+            <div class="skill-group">
+
+                <span>03</span>
+
+                <h3>
+                    Technology
+                </h3>
 
                 <p>HTML</p>
+
                 <p>CSS</p>
+
                 <p>Information Systems</p>
+
                 <p>Git & GitHub</p>
 
             </div>
 
         </section>
+
 
 
         <!-- ========================================
@@ -283,25 +516,102 @@
 
         <section id="education">
 
-            <p>05 — EDUCATION</p>
+            <p class="section-label">
+                05 — EDUCATION
+            </p>
 
-            <h2>Education</h2>
+            <h2>
+                Education
+            </h2>
 
-            <article>
 
-                <h3>Illinois State University</h3>
+            <article class="education-card">
 
-                <p>
-                    B.S. Management — Organizational Leadership
-                </p>
 
-                <p>Expected May 2028</p>
+                <!-- University Information -->
 
-                <p>GPA: 4.00 / 4.00</p>
+                <div class="education-content">
+
+                    <span class="education-year">
+                        2024 — 2028
+                    </span>
+
+                    <h3>
+                        Illinois State University
+                    </h3>
+
+                    <p class="education-degree">
+                        B.S. Management — Organizational Leadership
+                    </p>
+
+
+                    <div class="education-details">
+
+                        <div>
+
+                            <strong>4.00 / 4.00</strong>
+
+                            <span>GPA</span>
+
+                        </div>
+
+
+                        <div>
+
+                            <strong>May 2028</strong>
+
+                            <span>Expected Graduation</span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!--
+                    ISU LOGO
+
+                    Your current GitHub file is:
+                    images/ISU Seal_1C_186.eps
+
+                    Browsers do not reliably display EPS files.
+
+                    Export/download the official seal as PNG,
+                    upload it to /images, and name it:
+
+                    ISU-Seal.png
+
+                    Then remove the "education-logo-placeholder"
+                    class below and uncomment the <img>.
+                -->
+
+                <div class="education-logo education-logo-placeholder">
+
+                    <span>
+                        ILLINOIS STATE
+                    </span>
+
+                    <strong>
+                        UNIVERSITY
+                    </strong>
+
+                    <!--
+
+                    <img
+                        src="images/ISU-Seal.png"
+                        alt="Illinois State University seal"
+                    >
+
+                    -->
+
+                </div>
 
             </article>
 
         </section>
+
 
 
         <!-- ========================================
@@ -317,7 +627,9 @@
 
             <div class="credentials-heading">
 
-                <h2>Selected Credentials</h2>
+                <h2>
+                    Selected Credentials
+                </h2>
 
                 <p>
                     Continued learning across machine learning,
@@ -325,6 +637,7 @@
                 </p>
 
             </div>
+
 
 
             <div class="credentials-grid">
@@ -336,19 +649,24 @@
 
                 <article class="credential-card credential-featured">
 
+
                     <div class="credential-image">
 
                         <img
                             src="images/certificates/machine-learning-specialization-certificate.jpg"
                             alt="Machine Learning Specialization certificate"
+                            loading="lazy"
                         >
 
                     </div>
 
 
+
                     <div class="credential-info">
 
-                        <span>AI & MACHINE LEARNING</span>
+                        <span>
+                            AI & MACHINE LEARNING
+                        </span>
 
                         <h3>
                             Machine Learning Specialization
@@ -377,25 +695,31 @@
                 </article>
 
 
+
                 <!-- =================================
                      LINEAR ALGEBRA
                 ================================== -->
 
                 <article class="credential-card">
 
+
                     <div class="credential-image">
 
                         <img
                             src="images/certificates/LinearAlgebra.jpg"
                             alt="Linear Algebra certificate"
+                            loading="lazy"
                         >
 
                     </div>
 
 
+
                     <div class="credential-info">
 
-                        <span>QUANTITATIVE</span>
+                        <span>
+                            QUANTITATIVE
+                        </span>
 
                         <h3>
                             Linear Algebra
@@ -423,25 +747,31 @@
                 </article>
 
 
+
                 <!-- =================================
                      FINANCIAL ACCOUNTING I
                 ================================== -->
 
                 <article class="credential-card">
 
+
                     <div class="credential-image">
 
                         <img
                             src="images/certificates/FinancialAccounting1.jpg"
                             alt="Introduction to Financial Accounting certificate"
+                            loading="lazy"
                         >
 
                     </div>
 
 
+
                     <div class="credential-info">
 
-                        <span>BUSINESS & FINANCE</span>
+                        <span>
+                            BUSINESS & FINANCE
+                        </span>
 
                         <h3>
                             Introduction to Financial Accounting
@@ -469,25 +799,31 @@
                 </article>
 
 
+
                 <!-- =================================
                      FINANCIAL ACCOUNTING II
                 ================================== -->
 
                 <article class="credential-card">
 
+
                     <div class="credential-image">
 
                         <img
                             src="images/certificates/FinancialAccounting2.jpg"
                             alt="More Introduction to Financial Accounting certificate"
+                            loading="lazy"
                         >
 
                     </div>
 
 
+
                     <div class="credential-info">
 
-                        <span>BUSINESS & FINANCE</span>
+                        <span>
+                            BUSINESS & FINANCE
+                        </span>
 
                         <h3>
                             More Introduction to Financial Accounting
@@ -520,27 +856,69 @@
         </section>
 
 
+
         <!-- ========================================
              LEADERSHIP & ACTIVITIES
         ========================================= -->
 
         <section id="activities">
 
-            <p>07 — BEYOND THE CLASSROOM</p>
+            <p class="section-label">
+                07 — BEYOND THE CLASSROOM
+            </p>
 
-            <h2>Leadership & Activities</h2>
+            <h2>
+                Leadership & Activities
+            </h2>
 
-            <article>
 
-                <h3>Taekwondo</h3>
 
-                <p>Team Member & Coordinator</p>
+            <article class="activity-feature">
 
-                <p>2018–2024</p>
+
+                <!-- Taekwondo Image -->
+
+                <figure class="activity-image">
+
+                    <img
+                        src="images/taekwondo.jpeg"
+                        alt="Taekwondo competition and team achievement"
+                        loading="lazy"
+                    >
+
+                </figure>
+
+
+
+                <!-- Taekwondo Information -->
+
+                <div class="activity-content">
+
+                    <span>
+                        2018 — 2024
+                    </span>
+
+                    <h3>
+                        Taekwondo
+                    </h3>
+
+                    <p class="activity-role">
+                        Team Member & Coordinator
+                    </p>
+
+                    <p>
+                        Years of competitive sport developed discipline,
+                        consistency, teamwork, and the ability to perform
+                        under pressure while balancing individual performance
+                        with team responsibilities.
+                    </p>
+
+                </div>
 
             </article>
 
         </section>
+
 
 
         <!-- ========================================
@@ -549,33 +927,51 @@
 
         <section id="contact">
 
-            <p>08 — CONTACT</p>
+            <p class="section-label">
+                08 — CONTACT
+            </p>
 
-            <h2>Let's Connect</h2>
 
-            <a href="mailto:tfilimo@ilstu.edu">
-                Email
-            </a>
+            <h2>
+                Let's Connect
+            </h2>
 
-            <a
-                href="https://linkedin.com/in/timurfilimonov/"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                LinkedIn
-            </a>
 
-            <a
-                href="https://github.com/timurbuilds"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                GitHub
-            </a>
+            <p class="contact-intro">
+                Interested in business operations, analytics, technology,
+                and opportunities to solve meaningful business problems.
+            </p>
+
+
+            <div class="contact-links">
+
+                <a href="mailto:tfilimo@ilstu.edu">
+                    Email ↗
+                </a>
+
+                <a
+                    href="https://linkedin.com/in/timurfilimonov/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    LinkedIn ↗
+                </a>
+
+                <a
+                    href="https://github.com/timurbuilds"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    GitHub ↗
+                </a>
+
+            </div>
 
         </section>
 
+
     </main>
+
 
 
     <!-- ========================================
@@ -593,6 +989,7 @@
         </p>
 
     </footer>
+
 
 
     <script src="script.js"></script>
