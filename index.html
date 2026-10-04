@@ -4,10 +4,6 @@
 <head>
     <meta charset="UTF-8">
 
-    <!--
-        JavaScript enhancement detection.
-        If JavaScript works, no-js becomes js.
-    -->
     <script>
         document.documentElement.classList.remove("no-js");
         document.documentElement.classList.add("js");
@@ -51,10 +47,16 @@
 
             <a
                 href="#home"
-                class="nav-logo"
+                class="nav-logo nav-identity"
                 aria-label="Timur Filimonov home"
             >
-                TF
+                <span class="nav-name">
+                    Timur Filimonov
+                </span>
+
+                <span class="nav-role">
+                    Management · Analytics
+                </span>
             </a>
 
 
@@ -108,72 +110,132 @@
 
         <section id="home">
 
-            <p class="hero-eyebrow hero-reveal">
-                BUSINESS OPERATIONS · ANALYTICS · TECHNOLOGY
-            </p>
+            <div class="hero-layout">
 
 
-            <h1 class="hero-reveal">
-                Timur Filimonov
-            </h1>
+                <!-- HERO MAIN CONTENT -->
+
+                <div class="hero-main">
+
+                    <p class="hero-eyebrow hero-reveal">
+                        BUSINESS OPERATIONS · ANALYTICS · TECHNOLOGY
+                    </p>
 
 
-            <h2 class="hero-reveal">
-                Turning business problems into structured,
-                data-informed decisions.
-            </h2>
+                    <h1 class="hero-reveal">
+                        Timur Filimonov
+                    </h1>
 
 
-            <p class="hero-description hero-reveal">
-                Management student at Illinois State University combining
-                business operations, analytical thinking, leadership,
-                and an interest in emerging technology. Experience spans
-                facility operations, staff coordination, financial processes,
-                marketing, competitive sport, and applied machine learning,
-                with a focus on using data and technology to improve
-                real-world decisions.
-            </p>
+                    <h2 class="hero-reveal">
+                        Turning business problems into structured,
+                        data-informed decisions.
+                    </h2>
 
 
-            <div class="hero-tags hero-reveal">
-
-                <span>
-                    Business Operations
-                </span>
-
-                <span>
-                    Analytics
-                </span>
-
-                <span>
-                    Leadership
-                </span>
-
-                <span>
-                    Artificial Intelligence
-                </span>
-
-                <span>
-                    Strategy
-                </span>
-
-            </div>
+                    <p class="hero-description hero-reveal">
+                        Management student at Illinois State University
+                        combining business operations, analytical thinking,
+                        leadership, and an interest in emerging technology.
+                        Experience spans facility operations, staff
+                        coordination, financial processes, marketing,
+                        competitive sport, and applied machine learning,
+                        with a focus on using data and technology to improve
+                        real-world decisions.
+                    </p>
 
 
-            <div class="hero-actions hero-reveal">
+                    <div class="hero-tags hero-reveal">
 
-                <a href="#work">
-                    Explore My Work
-                </a>
+                        <span>
+                            Business Operations
+                        </span>
+
+                        <span>
+                            Analytics
+                        </span>
+
+                        <span>
+                            Leadership
+                        </span>
+
+                        <span>
+                            Artificial Intelligence
+                        </span>
+
+                        <span>
+                            Strategy
+                        </span>
+
+                    </div>
 
 
-                <a
-                    href="documents/Timur%20Filimonov%20Resume.pdf"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    <div class="hero-actions hero-reveal">
+
+                        <a href="#work">
+                            Explore My Work
+                        </a>
+
+
+                        <a
+                            href="documents/TimurFilimonov.pdf"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            View Résumé ↗
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- HERO UNIVERSITY IDENTITY -->
+
+                <aside
+                    class="hero-university hero-reveal"
+                    aria-label="Illinois State University academic information"
                 >
-                    View Résumé ↗
-                </a>
+
+                    <img
+                        class="hero-seal"
+                        src="images/ISU-Seal_1C_186.png"
+                        alt="Illinois State University seal"
+                    >
+
+
+                    <div class="hero-university-content">
+
+                        <span class="hero-university-label">
+                            ILLINOIS STATE UNIVERSITY
+                        </span>
+
+
+                        <strong>
+                            B.S. Management
+                        </strong>
+
+
+                        <p>
+                            Organizational Leadership
+                        </p>
+
+
+                        <div class="hero-university-meta">
+
+                            <span>
+                                GPA 4.00 / 4.00
+                            </span>
+
+                            <span>
+                                Class of 2028
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </aside>
 
             </div>
 
@@ -392,9 +454,7 @@
             </div>
 
 
-            <!-- ====================================
-                 ASSISTANT DIRECTOR
-            ===================================== -->
+            <!-- ASSISTANT DIRECTOR -->
 
             <article class="experience-item reveal-up">
 
@@ -440,6 +500,7 @@
                         service delivery across the organization.
                     </p>
 
+
                     <p>
                         Monitor schedules, program delivery, customer
                         feedback, participation data, and service quality
@@ -447,11 +508,13 @@
                         for improvement.
                     </p>
 
+
                     <p>
-                        Assist the Director with multimillion-ruble operating
+                        Assist the CEO with multimillion-ruble operating
                         budgets, payroll and compensation processes,
                         participation records, and risk-management activities.
                     </p>
+
 
                     <p>
                         Evaluate facility space utilization and revenue per
@@ -460,11 +523,13 @@
                         space.
                     </p>
 
+
                     <p>
                         Oversee equipment maintenance, facility cleanliness,
                         and safety standards across fitness floors, training
                         halls, and customer-facing areas.
                     </p>
+
 
                     <p>
                         Coordinate day-to-day operations with 10+ on-site
@@ -506,9 +571,7 @@
             </article>
 
 
-            <!-- ====================================
-                 MARKETING ASSISTANT
-            ===================================== -->
+            <!-- MARKETING ASSISTANT -->
 
             <article class="experience-item reveal-up">
 
@@ -549,17 +612,20 @@
                         for a fitness organization serving 600+ clients.
                     </p>
 
+
                     <p>
                         Supported promotion across 15+ fitness and sports
                         programs, adapting communication to different
                         customer segments and program offerings.
                     </p>
 
+
                     <p>
                         Coordinated website and social-media content,
                         promotional ideas, and event communications to
                         support customer engagement and program visibility.
                     </p>
+
 
                     <p>
                         Assisted with event promotion, vendor coordination,
@@ -601,9 +667,7 @@
             </article>
 
 
-            <!-- ====================================
-                 ASSISTANT COACH
-            ===================================== -->
+            <!-- ASSISTANT COACH -->
 
             <article class="experience-item reveal-up">
 
@@ -645,6 +709,7 @@
                         development.
                     </p>
 
+
                     <p>
                         Assisted with training organization, equipment
                         coordination, athlete preparation, and development
@@ -677,9 +742,7 @@
             </article>
 
 
-            <!-- ====================================
-                 CHIEF REFEREE
-            ===================================== -->
+            <!-- CHIEF REFEREE -->
 
             <article class="experience-item reveal-up">
 
@@ -720,6 +783,7 @@
                         competition brackets, scoring processes, and award
                         ceremonies.
                     </p>
+
 
                     <p>
                         Led and supported referee teams while resolving
@@ -780,9 +844,7 @@
             </div>
 
 
-            <!-- ====================================
-                 PROJECT 01
-            ===================================== -->
+            <!-- PROJECT 01 -->
 
             <article class="project-card reveal-project">
 
@@ -854,9 +916,7 @@
             </article>
 
 
-            <!-- ====================================
-                 PROJECT 02
-            ===================================== -->
+            <!-- PROJECT 02 -->
 
             <article class="project-card reveal-project">
 
@@ -928,9 +988,7 @@
             </article>
 
 
-            <!-- ====================================
-                 PROJECT 03
-            ===================================== -->
+            <!-- PROJECT 03 -->
 
             <article class="project-card reveal-project">
 
@@ -1003,9 +1061,7 @@
             </article>
 
 
-            <!-- ====================================
-                 PROJECT 04 — PORTFOLIO
-            ===================================== -->
+            <!-- PROJECT 04 -->
 
             <article class="project-card reveal-project">
 
@@ -1098,8 +1154,6 @@
             </h2>
 
 
-            <!-- BUSINESS -->
-
             <div class="skill-group reveal-child">
 
                 <span class="skill-number">
@@ -1147,8 +1201,6 @@
             </div>
 
 
-            <!-- ANALYTICS & FINANCE -->
-
             <div class="skill-group reveal-child">
 
                 <span class="skill-number">
@@ -1195,8 +1247,6 @@
 
             </div>
 
-
-            <!-- AI & TECHNOLOGY -->
 
             <div class="skill-group reveal-child">
 
@@ -1277,14 +1327,30 @@
                     </span>
 
 
-                    <h3>
-                        Illinois State University
-                    </h3>
+                    <div class="education-title-row">
+
+                        <img
+                            class="education-seal"
+                            src="images/ISU-Seal_1C_186.png"
+                            alt="Illinois State University seal"
+                            loading="lazy"
+                        >
 
 
-                    <p class="education-location">
-                        Normal, Illinois
-                    </p>
+                        <div>
+
+                            <h3>
+                                Illinois State University
+                            </h3>
+
+
+                            <p class="education-location">
+                                Normal, Illinois
+                            </p>
+
+                        </div>
+
+                    </div>
 
 
                     <p class="education-degree">
@@ -1323,24 +1389,6 @@
                     </div>
 
                 </div>
-
-
-                <!--
-                    IMPORTANT:
-                    The existing ISU seal is an EPS file:
-                    images/ISU Seal_1C_186.eps
-
-                    Browsers do not reliably display EPS files.
-
-                    Convert it to PNG or SVG and then we can place it
-                    above "ACADEMIC PROFILE" using:
-
-                    <img
-                        class="education-seal"
-                        src="images/ISU-Seal.png"
-                        alt="Illinois State University seal"
-                    >
-                -->
 
 
                 <aside class="education-profile reveal-right">
@@ -1684,7 +1732,7 @@
                 <figure class="activity-image reveal-left">
 
                     <img
-                        src="images/taekwondo.jpeg"
+                        src="images/taekwondow.jpeg"
                         alt="Taekwondo competition and team achievement"
                         loading="lazy"
                     >
@@ -1833,7 +1881,7 @@
 
 
                     <a
-                        href="documents/Timur%20Filimonov%20Resume.pdf"
+                        href="documents/TimurFilimonov.pdf"
                         target="_blank"
                         rel="noopener noreferrer"
                     >
