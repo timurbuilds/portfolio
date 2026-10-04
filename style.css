@@ -1,7 +1,7 @@
 /* ========================================
    TIMUR FILIMONOV — PORTFOLIO
    Recruiter Edition
-   Mountain / Menswear Palette
+   Refined Mountain / Menswear Palette
    Full Responsive Version
 ======================================== */
 
@@ -25,7 +25,7 @@
 
     --border: #D8D1C5;
 
-    /* Artwork palette */
+    /* Mountain artwork palette */
     --mountain-dark: #493344;
     --mountain-purple: #70566D;
     --mountain-slate: #5A566B;
@@ -37,12 +37,12 @@
 
     --mist: #D8C2B6;
 
-    /* Derived restrained tones */
-    --mountain-wash: rgba(112, 86, 109, 0.07);
-    --slate-wash: rgba(90, 86, 107, 0.07);
-    --rose-wash: rgba(201, 135, 130, 0.08);
-    --peach-wash: rgba(232, 160, 120, 0.10);
-    --blue-wash: rgba(102, 117, 140, 0.08);
+    /* Very restrained supporting washes */
+    --mountain-wash: rgba(112, 86, 109, 0.055);
+    --slate-wash: rgba(90, 86, 107, 0.055);
+    --rose-wash: rgba(201, 135, 130, 0.065);
+    --peach-wash: rgba(232, 160, 120, 0.075);
+    --blue-wash: rgba(102, 117, 140, 0.055);
 
     --max-width: 1200px;
 
@@ -101,7 +101,7 @@ section {
         var(--space-xl)
         var(--space-md);
 
-    scroll-margin-top: 115px;
+    scroll-margin-top: 95px;
 }
 
 a {
@@ -127,7 +127,7 @@ select {
 
 a:focus-visible,
 button:focus-visible {
-    outline: 2px solid var(--sky-blue);
+    outline: 2px solid var(--accent);
     outline-offset: 4px;
 }
 
@@ -183,18 +183,18 @@ button:focus-visible {
 
     width: 100%;
 
-    background: rgba(243, 240, 232, 0.96);
-    border-bottom: 1px solid var(--mist);
+    background: rgba(243, 240, 232, 0.97);
+    border-bottom: 1px solid var(--border);
 
-    -webkit-backdrop-filter: blur(12px);
-    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
 }
 
 .site-nav {
     width: 100%;
     max-width: var(--max-width);
 
-    min-height: 110px;
+    height: 90px;
 
     margin: 0 auto;
     padding: 0 var(--space-md);
@@ -209,37 +209,41 @@ button:focus-visible {
 
 /* ========================================
    HEADER ARTWORK — webtop.png
-   Original artwork = 3:1
 ======================================== */
 
-.nav-artwork {
-    flex: 0 0 auto;
+/*
+   Important:
+   The artwork now has a fixed visual height.
+   The header itself is tighter, so there is
+   much less empty cream space above/below it.
+*/
 
-    width: 270px;
-    aspect-ratio: 3 / 1;
+.nav-artwork {
+    flex: 0 0 300px;
+
+    width: 300px;
+    height: 68px;
 
     display: block;
 
     overflow: hidden;
     line-height: 0;
 
-    border: 1px solid rgba(73, 51, 68, 0.16);
+    /* No visible box/border around artwork */
+    border: 0;
 
     transition:
         opacity var(--transition),
         transform var(--transition),
-        box-shadow var(--transition),
-        border-color var(--transition);
+        box-shadow var(--transition);
 }
 
 .nav-artwork:hover {
     opacity: 0.97;
     transform: translateY(-1px);
 
-    border-color: rgba(154, 103, 53, 0.35);
-
     box-shadow:
-        0 8px 24px rgba(73, 51, 68, 0.10);
+        0 7px 20px rgba(73, 51, 68, 0.09);
 }
 
 .nav-artwork-image {
@@ -250,8 +254,18 @@ button:focus-visible {
 
     max-width: none;
 
-    object-fit: contain;
-    object-position: center;
+    /*
+       Cover is intentional:
+       artwork fills the complete 300 x 68 area.
+       No empty area inside the image container.
+    */
+    object-fit: cover;
+
+    /*
+       Slightly left of center keeps the suit
+       visible while preserving the mountains.
+    */
+    object-position: 48% 50%;
 
     border: 0;
 }
@@ -294,11 +308,7 @@ button:focus-visible {
     width: 0;
     height: 1px;
 
-    background: linear-gradient(
-        90deg,
-        var(--accent),
-        var(--sky-rose)
-    );
+    background: var(--accent);
 
     transition: width var(--transition);
 }
@@ -336,9 +346,8 @@ button:focus-visible {
 }
 
 /*
-   Very subtle visual connection to the
-   sunset artwork without changing the
-   cream background.
+   Very restrained sunset accent.
+   Keeps the hero predominantly classic.
 */
 #home::before {
     content: "";
@@ -348,7 +357,7 @@ button:focus-visible {
     top: 0;
     right: 2rem;
 
-    width: 260px;
+    width: 220px;
     height: 1px;
 
     background: linear-gradient(
@@ -358,7 +367,7 @@ button:focus-visible {
         var(--sky-peach)
     );
 
-    opacity: 0.65;
+    opacity: 0.5;
 }
 
 .hero-layout {
@@ -483,9 +492,9 @@ button:focus-visible {
 .hero-tags span:hover {
     color: var(--mountain-dark);
 
-    background: var(--rose-wash);
+    background: var(--mountain-wash);
 
-    border-color: var(--sky-rose);
+    border-color: var(--mist);
 
     transform: translateY(-1px);
 }
@@ -538,7 +547,7 @@ button:focus-visible {
     color: #FFFFFF;
 
     box-shadow:
-        0 8px 22px rgba(73, 51, 68, 0.14);
+        0 8px 22px rgba(73, 51, 68, 0.13);
 
     transform: translateY(-2px);
 }
@@ -570,8 +579,8 @@ button:focus-visible {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
 
-    border-top: 1px solid var(--mist);
-    border-bottom: 1px solid var(--mist);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
 }
 
 .fact {
@@ -600,7 +609,7 @@ button:focus-visible {
 }
 
 .fact:hover {
-    background: var(--slate-wash);
+    background: rgba(250, 248, 242, 0.5);
 }
 
 .fact strong {
@@ -613,6 +622,11 @@ button:focus-visible {
     margin-bottom: 0.2rem;
 }
 
+/*
+   Accent variation is deliberately subtle.
+   All four now have similar darkness/weight.
+*/
+
 .fact:nth-child(2) strong {
     color: var(--mountain-purple);
 }
@@ -621,8 +635,12 @@ button:focus-visible {
     color: var(--accent-dark);
 }
 
+/*
+   FIX:
+   Business + AI is no longer blue.
+*/
 .fact:nth-child(4) strong {
-    color: var(--sky-blue);
+    color: var(--mountain-slate);
 }
 
 .fact span {
@@ -694,7 +712,7 @@ button:focus-visible {
     object-fit: cover;
     object-position: center 35%;
 
-    border: 1px solid var(--mist);
+    border: 1px solid var(--border);
 
     transition:
         transform 0.45s ease,
@@ -705,13 +723,13 @@ button:focus-visible {
     transform: scale(1.012);
 
     box-shadow:
-        0 16px 35px rgba(73, 51, 68, 0.10);
+        0 16px 35px rgba(73, 51, 68, 0.08);
 }
 
 .about-photo figcaption {
     padding-top: 0.65rem;
 
-    color: var(--mountain-slate);
+    color: var(--text-secondary);
 
     font-size: 0.72rem;
     letter-spacing: 0.05em;
@@ -750,8 +768,8 @@ button:focus-visible {
 
     margin-top: 2.4rem;
 
-    border-top: 1px solid var(--mist);
-    border-bottom: 1px solid var(--mist);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
 }
 
 .about-principles div {
@@ -773,7 +791,7 @@ button:focus-visible {
 }
 
 .about-principles div:hover {
-    background: var(--rose-wash);
+    background: var(--mountain-wash);
 }
 
 .about-principles strong {
@@ -791,7 +809,7 @@ button:focus-visible {
 }
 
 .about-principles div:nth-child(3) strong {
-    color: var(--sky-blue);
+    color: var(--mountain-slate);
 }
 
 .about-principles span {
@@ -828,10 +846,7 @@ button:focus-visible {
 
     border-top: 1px solid var(--border);
 
-    transition:
-        background var(--transition),
-        padding-left var(--transition),
-        padding-right var(--transition);
+    transition: background var(--transition);
 }
 
 .experience-item:hover {
@@ -916,8 +931,8 @@ button:focus-visible {
 }
 
 .experience-tags span:hover {
-    background: var(--blue-wash);
-    border-color: var(--sky-blue);
+    background: var(--slate-wash);
+    border-color: var(--sky-lavender);
 }
 
 
@@ -942,9 +957,7 @@ button:focus-visible {
 
     border-top: 1px solid var(--border);
 
-    transition:
-        background var(--transition),
-        transform var(--transition);
+    transition: background var(--transition);
 }
 
 .project-card:hover {
@@ -957,7 +970,7 @@ button:focus-visible {
 }
 
 .project-number {
-    color: var(--mist);
+    color: #C9C0B2;
 
     font-size: 2.4rem;
     font-weight: 700;
@@ -1018,14 +1031,14 @@ button:focus-visible {
 .project-tags span {
     padding: 0.33rem 0.65rem;
 
+    background: rgba(250, 248, 242, 0.45);
+
     border: 1px solid var(--border);
     border-radius: 100px;
 
     color: var(--text-secondary);
 
     font-size: 0.7rem;
-
-    background: rgba(250, 248, 242, 0.45);
 }
 
 .project-links {
@@ -1054,7 +1067,7 @@ button:focus-visible {
 
 .project-links a:hover {
     color: var(--mountain-purple);
-    border-color: var(--sky-rose);
+    border-color: var(--mountain-purple);
 }
 
 
@@ -1096,9 +1109,7 @@ button:focus-visible {
 
     border-top: 1px solid var(--border);
 
-    transition:
-        background var(--transition),
-        transform var(--transition);
+    transition: background var(--transition);
 }
 
 .skill-group:hover {
@@ -1127,7 +1138,7 @@ button:focus-visible {
 }
 
 .skill-group:nth-of-type(3) .skill-number {
-    color: var(--sky-blue);
+    color: var(--mountain-slate);
 }
 
 .skill-group h3 {
@@ -1234,7 +1245,7 @@ button:focus-visible {
 }
 
 .education-location {
-    color: var(--mountain-purple);
+    color: var(--accent-dark);
 
     font-size: 0.82rem;
 }
@@ -1258,8 +1269,8 @@ button:focus-visible {
     width: 100%;
     max-width: 540px;
 
-    border-top: 1px solid var(--mist);
-    border-bottom: 1px solid var(--mist);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
 }
 
 .education-details div {
@@ -1313,13 +1324,13 @@ button:focus-visible {
         linear-gradient(
             145deg,
             var(--surface) 0%,
-            rgba(216, 194, 182, 0.17) 100%
+            rgba(216, 194, 182, 0.14) 100%
         );
 
-    border: 1px solid var(--mist);
+    border: 1px solid var(--border);
 
     box-shadow:
-        0 14px 35px rgba(73, 51, 68, 0.05);
+        0 14px 35px rgba(73, 51, 68, 0.04);
 }
 
 .education-profile-label {
@@ -1331,7 +1342,7 @@ button:focus-visible {
 
     padding-bottom: 1rem;
 
-    border-bottom: 1px solid var(--mist);
+    border-bottom: 1px solid var(--border);
 }
 
 .education-profile-item {
@@ -1348,7 +1359,7 @@ button:focus-visible {
 .education-profile-item span {
     display: block;
 
-    color: var(--sky-blue);
+    color: var(--mountain-slate);
 
     font-size: 0.62rem;
     font-weight: 700;
@@ -1421,13 +1432,11 @@ button:focus-visible {
 
     border-top: 1px solid var(--border);
 
-    transition:
-        transform var(--transition),
-        border-color var(--transition);
+    transition: border-color var(--transition);
 }
 
 .credential-card:hover {
-    border-color: var(--sky-rose);
+    border-color: var(--mist);
 }
 
 .credential-image {
@@ -1523,7 +1532,7 @@ button:focus-visible {
 
 .credential-info a:hover {
     color: var(--mountain-purple);
-    border-color: var(--sky-rose);
+    border-color: var(--mountain-purple);
 }
 
 
@@ -1548,14 +1557,14 @@ button:focus-visible {
         linear-gradient(
             135deg,
             var(--surface) 0%,
-            rgba(102, 117, 140, 0.055) 55%,
-            rgba(201, 135, 130, 0.065) 100%
+            rgba(102, 117, 140, 0.035) 55%,
+            rgba(201, 135, 130, 0.045) 100%
         );
 
-    border: 1px solid var(--mist);
+    border: 1px solid var(--border);
 
     box-shadow:
-        0 16px 40px rgba(73, 51, 68, 0.045);
+        0 16px 40px rgba(73, 51, 68, 0.035);
 }
 
 .credential-featured .credential-image {
@@ -1627,7 +1636,7 @@ button:focus-visible {
 
     background: var(--surface);
 
-    border: 1px solid var(--mist);
+    border: 1px solid var(--border);
 
     transition: box-shadow var(--transition);
 }
@@ -1645,7 +1654,7 @@ button:focus-visible {
 
 .activity-feature:hover .activity-image {
     box-shadow:
-        0 15px 35px rgba(73, 51, 68, 0.08);
+        0 15px 35px rgba(73, 51, 68, 0.07);
 }
 
 .activity-feature:hover .activity-image img {
@@ -1719,8 +1728,8 @@ button:focus-visible {
 }
 
 .activity-traits span:hover {
-    background: var(--rose-wash);
-    border-color: var(--sky-rose);
+    background: var(--mountain-wash);
+    border-color: var(--mist);
 }
 
 
@@ -1742,7 +1751,7 @@ button:focus-visible {
     top: 0;
     left: 2rem;
 
-    width: 180px;
+    width: 160px;
     height: 2px;
 
     background: linear-gradient(
@@ -1751,6 +1760,8 @@ button:focus-visible {
         var(--sky-rose),
         var(--sky-peach)
     );
+
+    opacity: 0.75;
 }
 
 .contact-layout {
@@ -1792,7 +1803,7 @@ button:focus-visible {
     display: flex;
     flex-direction: column;
 
-    border-top: 1px solid var(--mist);
+    border-top: 1px solid var(--border);
 }
 
 .contact-links a {
@@ -1821,7 +1832,7 @@ button:focus-visible {
     background:
         linear-gradient(
             90deg,
-            var(--rose-wash),
+            var(--mountain-wash),
             transparent
         );
 
@@ -1829,7 +1840,7 @@ button:focus-visible {
 }
 
 .contact-links span {
-    color: var(--sky-blue);
+    color: var(--mountain-slate);
 
     font-size: 0.75rem;
 }
@@ -1862,7 +1873,7 @@ footer {
 
     gap: 2rem;
 
-    color: var(--mountain-slate);
+    color: var(--text-secondary);
 
     font-size: 0.72rem;
 }
@@ -2000,13 +2011,15 @@ footer {
 @media (max-width: 1100px) {
 
     .site-nav {
-        min-height: 100px;
+        height: 86px;
         gap: 1.4rem;
     }
 
     .nav-artwork {
-        width: 240px;
-        aspect-ratio: 3 / 1;
+        flex-basis: 265px;
+
+        width: 265px;
+        height: 62px;
     }
 
     .nav-links {
@@ -2031,12 +2044,14 @@ footer {
 @media (max-width: 950px) {
 
     .site-nav {
-        min-height: 100px;
+        height: 82px;
     }
 
     .nav-artwork {
-        width: 240px;
-        aspect-ratio: 3 / 1;
+        flex-basis: 260px;
+
+        width: 260px;
+        height: 60px;
     }
 
     .nav-links {
@@ -2201,15 +2216,17 @@ footer {
     /* ---------- Header ---------- */
 
     .site-nav {
-        min-height: 88px;
+        height: 74px;
 
         padding-left: 1.25rem;
         padding-right: 1.25rem;
     }
 
     .nav-artwork {
-        width: 210px;
-        aspect-ratio: 3 / 1;
+        flex-basis: 225px;
+
+        width: 225px;
+        height: 54px;
     }
 
 
@@ -2219,7 +2236,7 @@ footer {
         padding-left: 1.25rem;
         padding-right: 1.25rem;
 
-        scroll-margin-top: 95px;
+        scroll-margin-top: 80px;
     }
 
 
@@ -2529,15 +2546,17 @@ footer {
     /* ---------- Header ---------- */
 
     .site-nav {
-        min-height: 80px;
+        height: 68px;
 
         padding-left: 1rem;
         padding-right: 1rem;
     }
 
     .nav-artwork {
-        width: 190px;
-        aspect-ratio: 3 / 1;
+        flex-basis: 205px;
+
+        width: 205px;
+        height: 50px;
     }
 
 
