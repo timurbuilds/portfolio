@@ -57,152 +57,154 @@ document.addEventListener("DOMContentLoaded", () => {
 
             });
 
-        return;
-    }
+    } else {
 
 
+        /* ========================================
+           STANDARD SCROLL REVEALS
+        ========================================= */
 
-    /* ========================================
-       STANDARD SCROLL REVEALS
-    ========================================= */
-
-    const revealElements =
-        document.querySelectorAll(
-            revealSelector
-        );
-
-
-    const revealObserver =
-        new IntersectionObserver(
-
-            (entries, observer) => {
-
-                entries.forEach((entry) => {
-
-                    if (!entry.isIntersecting) {
-                        return;
-                    }
+        const revealElements =
+            document.querySelectorAll(
+                revealSelector
+            );
 
 
-                    entry.target.classList.add(
-                        "is-visible"
-                    );
+        const revealObserver =
+            new IntersectionObserver(
+
+                (entries, observer) => {
+
+                    entries.forEach((entry) => {
+
+                        if (!entry.isIntersecting) {
+                            return;
+                        }
 
 
-                    /*
-                        Each element animates only once.
-                    */
-
-                    observer.unobserve(
-                        entry.target
-                    );
-
-                });
-
-            },
-
-            {
-                threshold: 0.14,
-
-                rootMargin:
-                    "0px 0px -45px 0px"
-            }
-
-        );
-
-
-    revealElements.forEach((element) => {
-
-        revealObserver.observe(element);
-
-    });
-
-
-
-    /* ========================================
-       STAGGERED GROUPS
-    ========================================= */
-
-    /*
-        Used for groups where individual items
-        should appear sequentially.
-
-        Current examples:
-        - Quick facts
-        - Skills
-    */
-
-    const staggerGroups =
-        document.querySelectorAll(
-            ".reveal-stagger"
-        );
-
-
-    const staggerObserver =
-        new IntersectionObserver(
-
-            (entries, observer) => {
-
-                entries.forEach((entry) => {
-
-                    if (!entry.isIntersecting) {
-                        return;
-                    }
-
-
-                    const children =
-                        entry.target.querySelectorAll(
-                            ".reveal-child"
+                        entry.target.classList.add(
+                            "is-visible"
                         );
 
 
-                    children.forEach(
-                        (child, index) => {
+                        /*
+                            Each element animates
+                            only once.
+                        */
 
-                            /*
-                                Slight stagger creates hierarchy
-                                without making the site feel slow.
-                            */
+                        observer.unobserve(
+                            entry.target
+                        );
 
-                            const delay =
-                                index * 90;
+                    });
+
+                },
+
+                {
+                    threshold: 0.14,
+
+                    rootMargin:
+                        "0px 0px -45px 0px"
+                }
+
+            );
 
 
-                            window.setTimeout(() => {
+        revealElements.forEach((element) => {
 
-                                child.classList.add(
-                                    "is-visible"
-                                );
+            revealObserver.observe(element);
 
-                            }, delay);
+        });
 
+
+
+        /* ========================================
+           STAGGERED GROUPS
+        ========================================= */
+
+        /*
+            Used for groups where individual
+            items should appear sequentially.
+
+            Current examples:
+            - Quick facts
+            - Skills
+        */
+
+        const staggerGroups =
+            document.querySelectorAll(
+                ".reveal-stagger"
+            );
+
+
+        const staggerObserver =
+            new IntersectionObserver(
+
+                (entries, observer) => {
+
+                    entries.forEach((entry) => {
+
+                        if (!entry.isIntersecting) {
+                            return;
                         }
-                    );
 
 
-                    observer.unobserve(
-                        entry.target
-                    );
-
-                });
-
-            },
-
-            {
-                threshold: 0.12,
-
-                rootMargin:
-                    "0px 0px -30px 0px"
-            }
-
-        );
+                        const children =
+                            entry.target.querySelectorAll(
+                                ".reveal-child"
+                            );
 
 
-    staggerGroups.forEach((group) => {
+                        children.forEach(
+                            (child, index) => {
 
-        staggerObserver.observe(group);
+                                /*
+                                    Slight stagger creates
+                                    hierarchy without making
+                                    the site feel slow.
+                                */
 
-    });
+                                const delay =
+                                    index * 90;
+
+
+                                window.setTimeout(() => {
+
+                                    child.classList.add(
+                                        "is-visible"
+                                    );
+
+                                }, delay);
+
+                            }
+                        );
+
+
+                        observer.unobserve(
+                            entry.target
+                        );
+
+                    });
+
+                },
+
+                {
+                    threshold: 0.12,
+
+                    rootMargin:
+                        "0px 0px -30px 0px"
+                }
+
+            );
+
+
+        staggerGroups.forEach((group) => {
+
+            staggerObserver.observe(group);
+
+        });
+
+    }
 
 
 
@@ -234,7 +236,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (
         sections.length > 0 &&
-        navLinks.length > 0
+        navLinks.length > 0 &&
+        "IntersectionObserver" in window
     ) {
 
         const sectionObserver =
@@ -325,11 +328,11 @@ document.addEventListener("DOMContentLoaded", () => {
     ========================================= */
 
     /*
-        CSS already provides smooth scrolling.
+        CSS handles the visual smooth scrolling.
 
-        This section improves accessibility by
+        JavaScript improves accessibility by
         moving keyboard focus to the destination
-        after an internal navigation link is used.
+        after an internal link is selected.
     */
 
     const internalLinks =
@@ -368,11 +371,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
                 /*
-                    Do not interfere with normal
-                    scrolling behavior.
-
-                    We only make the destination
-                    programmatically focusable.
+                    Make the section temporarily
+                    focusable if necessary.
                 */
 
                 if (
@@ -386,6 +386,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 }
 
+
+                /*
+                    Wait for the browser to begin
+                    navigating to the section before
+                    moving keyboard focus.
+
+                    preventScroll keeps the browser
+                    from performing a second jump.
+                */
+
+                window.setTimeout(() => {
+
+                    target.focus({
+                        preventScroll: true
+                    });
+
+                }, 400);
+
             }
         );
 
@@ -394,19 +412,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* ========================================
+       HERO ENTRANCE
+    ========================================= */
+
+    /*
+        Hero elements use CSS animations rather
+        than IntersectionObserver because they
+        are visible immediately when the page
+        loads.
+
+        No JavaScript animation is required here.
+
+        .hero-reveal remains in the HTML so the
+        CSS hero entrance system continues to work.
+    */
+
+
+
+    /* ========================================
        OPTIONAL CURRENT YEAR
     ========================================= */
 
     /*
-        If you later change your footer to:
+        If the footer is later changed to:
 
         <span id="current-year"></span>
 
-        JavaScript will automatically insert
+        JavaScript automatically inserts
         the current year.
 
-        Nothing happens if the element does
-        not exist.
+        Nothing happens if that element
+        does not exist.
     */
 
     const yearElement =
