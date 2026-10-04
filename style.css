@@ -11,7 +11,6 @@
 ======================================== */
 
 :root {
-    /* Original foundation */
     --background: #F3F0E8;
     --surface: #FAF8F2;
     --surface-dark: #ECE7DC;
@@ -37,7 +36,7 @@
 
     --mist: #D8C2B6;
 
-    /* Very restrained supporting washes */
+    /* Restrained supporting washes */
     --mountain-wash: rgba(112, 86, 109, 0.055);
     --slate-wash: rgba(90, 86, 107, 0.055);
     --rose-wash: rgba(201, 135, 130, 0.065);
@@ -212,16 +211,18 @@ button:focus-visible {
 ======================================== */
 
 /*
-   Important:
-   The artwork now has a fixed visual height.
-   The header itself is tighter, so there is
-   much less empty cream space above/below it.
+   Wider artwork, but the header itself
+   remains 90px tall.
+
+   This gives the image more visual presence
+   without bringing back the oversized
+   cream border/header problem.
 */
 
 .nav-artwork {
-    flex: 0 0 300px;
+    flex: 0 0 320px;
 
-    width: 300px;
+    width: 320px;
     height: 68px;
 
     display: block;
@@ -229,7 +230,6 @@ button:focus-visible {
     overflow: hidden;
     line-height: 0;
 
-    /* No visible box/border around artwork */
     border: 0;
 
     transition:
@@ -240,6 +240,7 @@ button:focus-visible {
 
 .nav-artwork:hover {
     opacity: 0.97;
+
     transform: translateY(-1px);
 
     box-shadow:
@@ -255,15 +256,14 @@ button:focus-visible {
     max-width: none;
 
     /*
-       Cover is intentional:
-       artwork fills the complete 300 x 68 area.
-       No empty area inside the image container.
+       Cover guarantees the image completely
+       fills the artwork area.
     */
     object-fit: cover;
 
     /*
-       Slightly left of center keeps the suit
-       visible while preserving the mountains.
+       Keeps the suit visible while still
+       showing the mountain/sunset landscape.
     */
     object-position: 48% 50%;
 
@@ -333,22 +333,23 @@ button:focus-visible {
     width: 100%;
     max-width: var(--max-width);
 
-    min-height: 675px;
+    /*
+       Reduced from 675px.
+       This brings Quick Facts upward and
+       removes unnecessary dead space.
+    */
+    min-height: 625px;
 
     margin: 0 auto;
 
     padding:
-        5.2rem
+        5rem
         var(--space-md)
-        4.5rem;
+        3.6rem;
 
     display: block;
 }
 
-/*
-   Very restrained sunset accent.
-   Keeps the hero predominantly classic.
-*/
 #home::before {
     content: "";
 
@@ -622,11 +623,6 @@ button:focus-visible {
     margin-bottom: 0.2rem;
 }
 
-/*
-   Accent variation is deliberately subtle.
-   All four now have similar darkness/weight.
-*/
-
 .fact:nth-child(2) strong {
     color: var(--mountain-purple);
 }
@@ -636,11 +632,13 @@ button:focus-visible {
 }
 
 /*
-   FIX:
-   Business + AI is no longer blue.
+   Business + AI:
+   muted mountain tone instead of blue.
+   Close enough to the other metrics that
+   it no longer appears like a hyperlink.
 */
 .fact:nth-child(4) strong {
-    color: var(--mountain-slate);
+    color: #5F5360;
 }
 
 .fact span {
@@ -2016,9 +2014,9 @@ footer {
     }
 
     .nav-artwork {
-        flex-basis: 265px;
+        flex-basis: 280px;
 
-        width: 265px;
+        width: 280px;
         height: 62px;
     }
 
@@ -2028,6 +2026,10 @@ footer {
 
     .nav-links a {
         font-size: 0.67rem;
+    }
+
+    #home {
+        min-height: 610px;
     }
 
     #home h1 {
@@ -2245,8 +2247,8 @@ footer {
     #home {
         min-height: auto;
 
-        padding-top: 4.5rem;
-        padding-bottom: 4.5rem;
+        padding-top: 4.2rem;
+        padding-bottom: 4rem;
     }
 
     #home::before {
@@ -2563,8 +2565,8 @@ footer {
     /* ---------- Hero ---------- */
 
     #home {
-        padding-top: 3.8rem;
-        padding-bottom: 3.8rem;
+        padding-top: 3.6rem;
+        padding-bottom: 3.5rem;
     }
 
     #home h1 {
