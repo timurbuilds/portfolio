@@ -1,32 +1,56 @@
 /* ========================================
    TIMUR FILIMONOV — PORTFOLIO
-   Scroll Animation System
+   Interaction & Animation System
 ======================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
 
 
     /* ========================================
-       ACCESSIBILITY CHECK
+       SETTINGS
     ========================================= */
 
-    const reducedMotion =
-        window.matchMedia(
-            "(prefers-reduced-motion: reduce)"
-        ).matches;
+    const reducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+    ).matches;
 
 
-    if (reducedMotion) {
+    const revealSelector = [
+        ".reveal-up",
+        ".reveal-left",
+        ".reveal-right",
+        ".reveal-project",
+        ".reveal-credential"
+    ].join(", ");
+
+
+    const allAnimatedSelector = [
+        revealSelector,
+        ".reveal-child"
+    ].join(", ");
+
+
+
+    /* ========================================
+       ACCESSIBILITY / FALLBACK
+    ========================================= */
+
+    /*
+        If the visitor prefers reduced motion,
+        or IntersectionObserver is unsupported,
+        immediately reveal everything.
+
+        This prevents content from accidentally
+        remaining invisible.
+    */
+
+    if (
+        reducedMotion ||
+        !("IntersectionObserver" in window)
+    ) {
 
         document
-            .querySelectorAll(
-                ".reveal-up, " +
-                ".reveal-left, " +
-                ".reveal-right, " +
-                ".reveal-project, " +
-                ".reveal-credential, " +
-                ".reveal-child"
-            )
+            .querySelectorAll(allAnimatedSelector)
             .forEach((element) => {
 
                 element.classList.add("is-visible");
@@ -37,17 +61,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
+
     /* ========================================
-       NORMAL SCROLL REVEALS
+       STANDARD SCROLL REVEALS
     ========================================= */
 
     const revealElements =
         document.querySelectorAll(
-            ".reveal-up, " +
-            ".reveal-left, " +
-            ".reveal-right, " +
-            ".reveal-project, " +
-            ".reveal-credential"
+            revealSelector
         );
 
 
@@ -69,8 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
                     /*
-                        Stop observing after the
-                        animation has happened once.
+                        Each element animates only once.
                     */
 
                     observer.unobserve(
@@ -101,11 +121,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /* ========================================
        STAGGERED GROUPS
-
-       Used for:
-       - Quick facts
-       - Skills
     ========================================= */
+
+    /*
+        Used for groups where individual items
+        should appear sequentially.
+
+        Current examples:
+        - Quick facts
+        - Skills
+    */
 
     const staggerGroups =
         document.querySelectorAll(
@@ -134,13 +159,22 @@ document.addEventListener("DOMContentLoaded", () => {
                     children.forEach(
                         (child, index) => {
 
-                            setTimeout(() => {
+                            /*
+                                Slight stagger creates hierarchy
+                                without making the site feel slow.
+                            */
+
+                            const delay =
+                                index * 90;
+
+
+                            window.setTimeout(() => {
 
                                 child.classList.add(
                                     "is-visible"
                                 );
 
-                            }, index * 100);
+                            }, delay);
 
                         }
                     );
@@ -169,5 +203,223 @@ document.addEventListener("DOMContentLoaded", () => {
         staggerObserver.observe(group);
 
     });
+
+
+
+    /* ========================================
+       ACTIVE NAVIGATION
+    ========================================= */
+
+    /*
+        Highlights the navigation link
+        corresponding to the section currently
+        being viewed.
+
+        Example:
+        When Experience is on screen,
+        "Experience" receives .active.
+    */
+
+    const sections =
+        document.querySelectorAll(
+            "main section[id]"
+        );
+
+
+    const navLinks =
+        document.querySelectorAll(
+            ".nav-links a[href^='#']"
+        );
+
+
+    if (
+        sections.length > 0 &&
+        navLinks.length > 0
+    ) {
+
+        const sectionObserver =
+            new IntersectionObserver(
+
+                (entries) => {
+
+                    entries.forEach((entry) => {
+
+                        if (!entry.isIntersecting) {
+                            return;
+                        }
+
+
+                        const currentSection =
+                            entry.target.id;
+
+
+                        navLinks.forEach((link) => {
+
+                            const destination =
+                                link
+                                    .getAttribute("href")
+                                    .replace("#", "");
+
+
+                            const isCurrent =
+                                destination === currentSection;
+
+
+                            link.classList.toggle(
+                                "active",
+                                isCurrent
+                            );
+
+
+                            if (isCurrent) {
+
+                                link.setAttribute(
+                                    "aria-current",
+                                    "page"
+                                );
+
+                            } else {
+
+                                link.removeAttribute(
+                                    "aria-current"
+                                );
+
+                            }
+
+                        });
+
+                    });
+
+                },
+
+                {
+                    /*
+                        Creates an imaginary center
+                        region of the viewport.
+
+                        A section becomes active when
+                        it occupies this area.
+                    */
+
+                    rootMargin:
+                        "-35% 0px -55% 0px",
+
+                    threshold: 0
+                }
+
+            );
+
+
+        sections.forEach((section) => {
+
+            sectionObserver.observe(section);
+
+        });
+
+    }
+
+
+
+    /* ========================================
+       INTERNAL LINK SCROLLING
+    ========================================= */
+
+    /*
+        CSS already provides smooth scrolling.
+
+        This section improves accessibility by
+        moving keyboard focus to the destination
+        after an internal navigation link is used.
+    */
+
+    const internalLinks =
+        document.querySelectorAll(
+            'a[href^="#"]'
+        );
+
+
+    internalLinks.forEach((link) => {
+
+        link.addEventListener(
+            "click",
+            () => {
+
+                const targetId =
+                    link.getAttribute("href");
+
+
+                if (
+                    !targetId ||
+                    targetId === "#"
+                ) {
+                    return;
+                }
+
+
+                const target =
+                    document.querySelector(
+                        targetId
+                    );
+
+
+                if (!target) {
+                    return;
+                }
+
+
+                /*
+                    Do not interfere with normal
+                    scrolling behavior.
+
+                    We only make the destination
+                    programmatically focusable.
+                */
+
+                if (
+                    !target.hasAttribute("tabindex")
+                ) {
+
+                    target.setAttribute(
+                        "tabindex",
+                        "-1"
+                    );
+
+                }
+
+            }
+        );
+
+    });
+
+
+
+    /* ========================================
+       OPTIONAL CURRENT YEAR
+    ========================================= */
+
+    /*
+        If you later change your footer to:
+
+        <span id="current-year"></span>
+
+        JavaScript will automatically insert
+        the current year.
+
+        Nothing happens if the element does
+        not exist.
+    */
+
+    const yearElement =
+        document.getElementById(
+            "current-year"
+        );
+
+
+    if (yearElement) {
+
+        yearElement.textContent =
+            new Date().getFullYear();
+
+    }
 
 });
