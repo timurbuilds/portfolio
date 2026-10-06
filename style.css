@@ -100,7 +100,7 @@ section {
         var(--space-xl)
         var(--space-md);
 
-    scroll-margin-top: 95px;
+    scroll-margin-top: 90px;
 }
 
 a {
@@ -189,17 +189,29 @@ button:focus-visible {
     backdrop-filter: blur(10px);
 }
 
+
+/*
+   IMPORTANT:
+   Header is now 76px tall.
+
+   The artwork stretches to the FULL height
+   of the header, eliminating the large cream
+   area above and below the image.
+*/
+
 .site-nav {
     width: 100%;
     max-width: var(--max-width);
 
-    height: 90px;
+    height: 76px;
 
     margin: 0 auto;
-    padding: 0 var(--space-md);
+    padding:
+        0
+        var(--space-md);
 
     display: flex;
-    align-items: center;
+    align-items: stretch;
     justify-content: space-between;
 
     gap: 2rem;
@@ -210,20 +222,11 @@ button:focus-visible {
    HEADER ARTWORK — webtop.png
 ======================================== */
 
-/*
-   Wider artwork, but the header itself
-   remains 90px tall.
-
-   This gives the image more visual presence
-   without bringing back the oversized
-   cream border/header problem.
-*/
-
 .nav-artwork {
-    flex: 0 0 320px;
+    flex: 0 0 285px;
 
-    width: 320px;
-    height: 68px;
+    width: 285px;
+    height: 100%;
 
     display: block;
 
@@ -234,17 +237,14 @@ button:focus-visible {
 
     transition:
         opacity var(--transition),
-        transform var(--transition),
         box-shadow var(--transition);
 }
 
 .nav-artwork:hover {
     opacity: 0.97;
 
-    transform: translateY(-1px);
-
     box-shadow:
-        0 7px 20px rgba(73, 51, 68, 0.09);
+        6px 0 22px rgba(73, 51, 68, 0.08);
 }
 
 .nav-artwork-image {
@@ -255,15 +255,12 @@ button:focus-visible {
 
     max-width: none;
 
-    /*
-       Cover guarantees the image completely
-       fills the artwork area.
-    */
     object-fit: cover;
 
     /*
-       Keeps the suit visible while still
-       showing the mountain/sunset landscape.
+       Slight left bias preserves more of the
+       tailored figure while retaining the
+       mountain/sunset composition.
     */
     object-position: 48% 50%;
 
@@ -333,19 +330,14 @@ button:focus-visible {
     width: 100%;
     max-width: var(--max-width);
 
-    /*
-       Reduced from 675px.
-       This brings Quick Facts upward and
-       removes unnecessary dead space.
-    */
-    min-height: 625px;
+    min-height: 610px;
 
     margin: 0 auto;
 
     padding:
         5rem
         var(--space-md)
-        3.6rem;
+        3.5rem;
 
     display: block;
 }
@@ -368,7 +360,7 @@ button:focus-visible {
         var(--sky-peach)
     );
 
-    opacity: 0.5;
+    opacity: 0.45;
 }
 
 .hero-layout {
@@ -446,7 +438,7 @@ button:focus-visible {
 
 .hero-description {
     width: 100%;
-    max-width: 690px;
+    max-width: 720px;
 
     color: var(--text-secondary);
 
@@ -461,7 +453,7 @@ button:focus-visible {
 
 .hero-tags {
     width: 100%;
-    max-width: 760px;
+    max-width: 780px;
 
     display: flex;
     flex-wrap: wrap;
@@ -631,14 +623,15 @@ button:focus-visible {
     color: var(--accent-dark);
 }
 
+
 /*
-   Business + AI:
-   muted mountain tone instead of blue.
-   Close enough to the other metrics that
-   it no longer appears like a hyperlink.
+   Business + AI stays intentionally muted.
+   It should look like another professional
+   metric, not a bright hyperlink.
 */
+
 .fact:nth-child(4) strong {
-    color: #5F5360;
+    color: var(--mountain-slate);
 }
 
 .fact span {
@@ -1406,7 +1399,7 @@ button:focus-visible {
 }
 
 .credentials-heading > p {
-    max-width: 420px;
+    max-width: 430px;
 
     color: var(--text-secondary);
 
@@ -1414,77 +1407,133 @@ button:focus-visible {
     line-height: 1.7;
 }
 
+
+/*
+   Six credentials:
+   3 specializations on the first row,
+   3 supporting credentials on the second.
+
+   This is cleaner than making only one
+   specialization enormous.
+*/
+
 .credentials-grid {
     display: grid;
 
     grid-template-columns:
         repeat(3, minmax(0, 1fr));
 
-    gap: 3rem 1.5rem;
+    gap: 2.8rem 1.5rem;
 }
 
-.credential-card {
+.credential-card,
+.credential-featured {
     min-width: 0;
+
+    display: flex;
+    flex-direction: column;
 
     padding-top: 1rem;
 
+    background: transparent;
+
+    border: 0;
     border-top: 1px solid var(--border);
 
-    transition: border-color var(--transition);
+    box-shadow: none;
+
+    transition:
+        border-color var(--transition),
+        transform var(--transition);
 }
 
-.credential-card:hover {
-    border-color: var(--mist);
+.credential-card:hover,
+.credential-featured:hover {
+    border-color: var(--mountain-purple);
+
+    transform: translateY(-2px);
 }
 
-.credential-image {
+
+/* ---------- Credential Certificate ---------- */
+
+.credential-image,
+.credential-featured .credential-image {
     width: 100%;
-
-    overflow: hidden;
 
     aspect-ratio: 1.42 / 1;
 
-    margin-bottom: 1.3rem;
+    margin: 0 0 1.25rem;
 
     display: flex;
     align-items: center;
     justify-content: center;
+
+    overflow: hidden;
 
     background: var(--surface);
 
     border: 1px solid var(--border);
 }
 
-.credential-image img {
+.credential-image img,
+.credential-featured .credential-image img {
     width: 100%;
     height: 100%;
 
     object-fit: contain;
 
-    transition: transform 0.35s ease;
+    transition:
+        transform 0.35s ease,
+        filter 0.35s ease;
 }
 
-.credential-card:hover .credential-image img {
+.credential-card:hover .credential-image img,
+.credential-featured:hover .credential-image img {
     transform: scale(1.012);
 }
 
-.credential-info {
+
+/* ---------- Credential Information ---------- */
+
+.credential-info,
+.credential-featured .credential-info {
+    width: 100%;
+    max-width: none;
+
     min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 }
 
-.credential-info > span {
+.credential-info > span,
+.credential-featured .credential-info > span {
     display: block;
 
     color: var(--accent);
 
-    font-size: 0.66rem;
+    font-size: 0.64rem;
     font-weight: 700;
-    letter-spacing: 0.14em;
+    line-height: 1.45;
+    letter-spacing: 0.13em;
 
     margin-bottom: 0.6rem;
 }
 
-.credential-info h3 {
+
+/*
+   First three cards are the major
+   multi-course specializations.
+*/
+
+.credential-card:nth-child(-n + 3) .credential-info > span {
+    color: var(--mountain-purple);
+}
+
+.credential-info h3,
+.credential-featured .credential-info h3 {
     color: var(--text);
 
     font-size: 1.18rem;
@@ -1494,10 +1543,16 @@ button:focus-visible {
     margin-bottom: 0.4rem;
 }
 
-.credential-info h3 + p {
+.credential-card:nth-child(-n + 3) .credential-info h3 {
+    font-size: 1.28rem;
+}
+
+.credential-info h3 + p,
+.credential-featured .credential-info h3 + p {
     color: var(--text-secondary);
 
     font-size: 0.85rem;
+    line-height: 1.55;
 
     margin-bottom: 0.7rem;
 }
@@ -1505,14 +1560,25 @@ button:focus-visible {
 .credential-skills {
     color: var(--mountain-slate);
 
-    font-size: 0.78rem;
+    font-size: 0.77rem;
     line-height: 1.65;
 
-    margin: 0.7rem 0 1rem;
+    margin: 0.65rem 0 1rem;
 }
 
+
+/*
+   Push verification links to the same
+   general baseline even when titles and
+   skill descriptions differ in length.
+*/
+
 .credential-info a {
+    align-self: flex-start;
+
     display: inline-block;
+
+    margin-top: auto;
 
     color: var(--text);
 
@@ -1534,72 +1600,27 @@ button:focus-visible {
 }
 
 
-/* ---------- Featured Credential ---------- */
+/*
+   The HTML still contains
+   class="credential-featured" on the
+   Machine Learning card.
+
+   We intentionally neutralize the old
+   full-width featured-card styling so
+   all three specializations have equal
+   visual importance.
+*/
 
 .credential-featured {
-    grid-column: 1 / -1;
+    grid-column: auto;
 
-    display: grid;
+    grid-template-columns: none;
 
-    grid-template-columns:
-        minmax(0, 1.25fr)
-        minmax(280px, 0.75fr);
+    gap: 0;
 
-    gap: 3rem;
+    align-items: stretch;
 
-    align-items: center;
-
-    padding: 1.5rem;
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--surface) 0%,
-            rgba(102, 117, 140, 0.035) 55%,
-            rgba(201, 135, 130, 0.045) 100%
-        );
-
-    border: 1px solid var(--border);
-
-    box-shadow:
-        0 16px 40px rgba(73, 51, 68, 0.035);
-}
-
-.credential-featured .credential-image {
-    width: 100%;
-
-    aspect-ratio: auto;
-
-    margin: 0;
-
-    border: none;
-}
-
-.credential-featured .credential-image img {
-    width: 100%;
-    height: auto;
-
-    object-fit: contain;
-}
-
-.credential-featured .credential-info {
-    width: 100%;
-    max-width: 420px;
-}
-
-.credential-featured .credential-info > span {
-    color: var(--mountain-purple);
-}
-
-.credential-featured .credential-info h3 {
-    font-size: clamp(1.8rem, 3vw, 2.5rem);
-    line-height: 1.08;
-
-    margin-bottom: 0.7rem;
-}
-
-.credential-featured .credential-info h3 + p {
-    font-size: 0.95rem;
+    padding: 1rem 0 0;
 }
 
 
@@ -2009,15 +2030,16 @@ footer {
 @media (max-width: 1100px) {
 
     .site-nav {
-        height: 86px;
+        height: 74px;
+
         gap: 1.4rem;
     }
 
     .nav-artwork {
-        flex-basis: 280px;
+        flex-basis: 265px;
 
-        width: 280px;
-        height: 62px;
+        width: 265px;
+        height: 100%;
     }
 
     .nav-links {
@@ -2029,7 +2051,7 @@ footer {
     }
 
     #home {
-        min-height: 610px;
+        min-height: 600px;
     }
 
     #home h1 {
@@ -2046,14 +2068,14 @@ footer {
 @media (max-width: 950px) {
 
     .site-nav {
-        height: 82px;
+        height: 72px;
     }
 
     .nav-artwork {
-        flex-basis: 260px;
+        flex-basis: 255px;
 
-        width: 260px;
-        height: 60px;
+        width: 255px;
+        height: 100%;
     }
 
     .nav-links {
@@ -2163,18 +2185,12 @@ footer {
     .credentials-grid {
         grid-template-columns:
             repeat(2, minmax(0, 1fr));
+
+        gap: 2.8rem 1.5rem;
     }
 
     .credential-featured {
-        grid-column: 1 / -1;
-
-        grid-template-columns: 1fr;
-
-        gap: 1.5rem;
-    }
-
-    .credential-featured .credential-info {
-        max-width: 650px;
+        grid-column: auto;
     }
 
 
@@ -2218,17 +2234,17 @@ footer {
     /* ---------- Header ---------- */
 
     .site-nav {
-        height: 74px;
+        height: 68px;
 
         padding-left: 1.25rem;
         padding-right: 1.25rem;
     }
 
     .nav-artwork {
-        flex-basis: 225px;
+        flex-basis: 235px;
 
-        width: 225px;
-        height: 54px;
+        width: 235px;
+        height: 100%;
     }
 
 
@@ -2238,7 +2254,7 @@ footer {
         padding-left: 1.25rem;
         padding-right: 1.25rem;
 
-        scroll-margin-top: 80px;
+        scroll-margin-top: 75px;
     }
 
 
@@ -2461,21 +2477,18 @@ footer {
     }
 
     .credential-featured {
-        grid-column: 1;
+        grid-column: auto;
 
-        padding: 1rem;
+        padding-top: 1rem;
     }
 
-    .credential-featured .credential-image,
-    .credential-featured .credential-info {
-        max-width: none;
-    }
-
-    .credential-image {
+    .credential-image,
+    .credential-featured .credential-image {
         aspect-ratio: auto;
     }
 
-    .credential-image img {
+    .credential-image img,
+    .credential-featured .credential-image img {
         width: 100%;
         height: auto;
     }
@@ -2548,17 +2561,17 @@ footer {
     /* ---------- Header ---------- */
 
     .site-nav {
-        height: 68px;
+        height: 64px;
 
         padding-left: 1rem;
         padding-right: 1rem;
     }
 
     .nav-artwork {
-        flex-basis: 205px;
+        flex-basis: 215px;
 
-        width: 205px;
-        height: 50px;
+        width: 215px;
+        height: 100%;
     }
 
 
